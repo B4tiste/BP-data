@@ -75,6 +75,10 @@ h1 {
     z-index: 10;
 }
 
+#detail-caption {
+    position: absolute;
+}
+
 /* Responsive */
 @media (max-width: 600px) {
     .container {
