@@ -51,9 +51,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     return acc;
                 }, {});
 
-                console.log(searchValue);
-                console.log(lowerCaseMonsterDates);
-
                 if (searchValue in lowerCaseMonsterDates) {
                     // Récupérer et formater les dates associées au monstre recherché
                     const dates = lowerCaseMonsterDates[searchValue];
