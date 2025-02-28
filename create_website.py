@@ -66,6 +66,11 @@ html_content += '    <div id="detail-caption"></div>\n'
 html_content += '    <img id="detail-img" src="" alt="Balance Patch en grand">\n'
 html_content += '  </div>\n'
 
+# Footer
+html_content += '  <footer>\n'
+html_content += '    <p>By B4tiste</p>\n'
+html_content += '  </footer>\n'
+
 html_content += '  <script src="script.js"></script>\n'
 html_content += '</body>\n</html>\n'
 
