@@ -56,7 +56,7 @@ h1 {
 }
 
 .detail-view img {
-    width: 90%;
+    width: 100%;
     height: auto;
     /* On ajoute un padding-top pour laisser de la place au bouton s'il ne se superpose pas complètement */
     margin-top: 60px;
@@ -78,6 +78,62 @@ h1 {
 #detail-caption {
     position: absolute;
 }
+
+/* Styles pour la barre de recherche */
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-container input {
+    width: 300px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 10px;
+    transition: border-color 0.3s;
+    outline: none;
+}
+
+.search-container input:focus {
+    border-color: #007BFF;
+}
+
+.search-container button {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-right: 10px;
+}
+
+.search-container button:last-child {
+    margin-right: 0;
+}
+
+#search-button {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+#search-button:hover {
+    background-color: #0056b3;
+}
+
+#reset-button {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+#reset-button:hover {
+    background-color: #5a6268;
+}
+
 
 /* Responsive */
 @media (max-width: 600px) {
