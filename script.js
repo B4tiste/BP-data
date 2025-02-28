@@ -5,10 +5,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const detailImg = document.getElementById("detail-img");
     const detailCaption = document.getElementById("detail-caption");
     const backButton = document.getElementById("back-button");
+    const toggleNegativeButton = document.getElementById('toggle-negative-button');
     const searchInput = document.getElementById('monster-search');
     const searchButton = document.getElementById('search-button');
     const resetButton = document.getElementById('reset-button');
 
+    // Affichage de la vue détaillée lors du clic sur une card
     cards.forEach(card => {
         card.addEventListener("click", function () {
             const imgSrc = card.getAttribute("data-image");
@@ -17,12 +19,27 @@ document.addEventListener("DOMContentLoaded", function () {
             detailCaption.innerHTML = "Balance Patch - " + date;
             gridContainer.style.display = "none";
             detailView.style.display = "block";
+            // Par défaut, on s'assure que l'image est en mode négatif
+            detailImg.style.filter = "invert(1)";
+            toggleNegativeButton.textContent = "Voir original";
         });
     });
 
+    // Bouton retour
     backButton.addEventListener("click", function () {
         detailView.style.display = "none";
         gridContainer.style.display = "block";
+    });
+
+    // Bouton pour basculer l'affichage du filtre négatif
+    toggleNegativeButton.addEventListener("click", function() {
+        if (detailImg.style.filter === 'invert(1)') {
+            detailImg.style.filter = 'none';
+            toggleNegativeButton.textContent = "Afficher négatif";
+        } else {
+            detailImg.style.filter = 'invert(1)';
+            toggleNegativeButton.textContent = "Voir original";
+        }
     });
 
     // Charger le fichier JSON contenant les dates associées aux monstres
@@ -33,7 +50,6 @@ document.addEventListener("DOMContentLoaded", function () {
             // Fonction qui convertit une date "DD/MM/YYYY" en format "DD mois YYYY"
             function formatDate(dateStr) {
                 const parts = dateStr.split('/');
-                // Création d'un objet Date (les mois commencent à 0)
                 const dateObj = new Date(parts[2], parts[1] - 1, parts[0]);
                 return dateObj.toLocaleDateString('fr-FR', {
                     day: '2-digit',
@@ -52,11 +68,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 }, {});
 
                 if (searchValue in lowerCaseMonsterDates) {
-                    // Récupérer et formater les dates associées au monstre recherché
                     const dates = lowerCaseMonsterDates[searchValue];
                     const formattedDates = dates.map(dateStr => formatDate(dateStr));
 
-                    // Afficher uniquement les cards dont data-date correspond à une des dates
                     document.querySelectorAll('.card').forEach(card => {
                         const cardDate = card.getAttribute('data-date');
                         if (formattedDates.includes(cardDate)) {
@@ -70,17 +84,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             }
 
-            // Événement lors du clic sur le bouton de recherche
+            // Recherche sur clic et sur appui sur ENTREE
             searchButton.addEventListener('click', searchMonsters);
-
-            // Événement lors de l'appui sur la touche ENTREE dans le champ de recherche
             searchInput.addEventListener('keydown', function (event) {
                 if (event.key === 'Enter') {
                     searchMonsters();
                 }
             });
 
-            // Bouton pour réinitialiser et afficher toutes les cards
+            // Réinitialisation de la recherche
             resetButton.addEventListener('click', function () {
                 searchInput.value = '';
                 document.querySelectorAll('.card').forEach(card => {

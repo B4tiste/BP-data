@@ -61,7 +61,10 @@ html_content += '  </div>\n'
 
 # Section vue détaillée (cachée par défaut)
 html_content += '  <div class="detail-view" id="detail-view" style="display: none;">\n'
-html_content += '    <button id="back-button">Retour</button>\n'
+html_content += '    <div class="detail-buttons">\n'
+html_content += '      <button id="back-button">Retour</button>\n'
+html_content += '      <button id="toggle-negative-button">Voir original</button>\n'
+html_content += '    </div>\n'
 html_content += '    <div id="detail-caption"></div>\n'
 html_content += '    <img id="detail-img" src="" alt="Balance Patch en grand">\n'
 html_content += '  </div>\n'

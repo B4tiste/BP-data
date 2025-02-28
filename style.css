@@ -1,18 +1,22 @@
-/* Styles généraux (inchangés) */
+/* Corps de page */
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f0f2f5;
-    color: #333;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
 }
 
+/* Container principal avec fond sombre */
 .container {
     max-width: 1200px;
     margin: 30px auto;
     padding: 20px;
+    background-color: #1e1e1e;
+    border-radius: 8px;
 }
 
+/* Titre */
 h1 {
     text-align: center;
     margin-bottom: 30px;
@@ -26,20 +30,21 @@ h1 {
     gap: 20px;
 }
 
+/* Cards en thème sombre */
 .card {
-    background: #fff;
-    border: 1px solid #ddd;
+    background: #3a3a3a;
+    border: 1px solid #444;
     border-radius: 8px;
     padding: 15px;
     text-align: center;
     cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.15);
 }
 
 .card .date {
@@ -48,38 +53,48 @@ h1 {
     margin-bottom: 10px;
 }
 
-/* Vue détaillée */
+/* Vue détaillée en fond sombre */
 .detail-view {
     position: relative;
     text-align: center;
     padding: 20px;
+    background-color: #1e1e1e;
+    border-radius: 8px;
 }
 
-.detail-view img {
+/* L'image en vue détaillée est affichée en négatif par défaut */
+#detail-img {
     width: 100%;
     height: auto;
-    /* On ajoute un padding-top pour laisser de la place au bouton s'il ne se superpose pas complètement */
     margin-top: 60px;
+    filter: invert(1);
 }
 
-
-/* Bouton retour positionné en overlay sur l'image */
-#back-button {
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 10px 20px;
-    font-size: 1rem;
-    cursor: pointer;
-    z-index: 10;
+.detail-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    flex-direction: row;
 }
 
 #detail-caption {
     position: absolute;
 }
 
-/* Styles pour la barre de recherche */
+#back-button,
+#toggle-negative-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #3a3a3a;
+    color: #e0e0e0;
+    border: none;
+    border-radius: 4px;
+    margin: 0 10px; /* Optional spacing between buttons */
+}
+
+/* Barre de recherche */
 .search-container {
     display: flex;
     justify-content: center;
@@ -91,15 +106,17 @@ h1 {
     width: 300px;
     padding: 10px;
     font-size: 1rem;
-    border: 1px solid #ddd;
+    border: 1px solid #555;
     border-radius: 4px;
     margin-right: 10px;
     transition: border-color 0.3s;
     outline: none;
+    background-color: #3a3a3a;
+    color: #e0e0e0;
 }
 
 .search-container input:focus {
-    border-color: #007BFF;
+    border-color: #007bff;
 }
 
 .search-container button {
@@ -110,14 +127,12 @@ h1 {
     cursor: pointer;
     transition: background-color 0.3s;
     margin-right: 10px;
-}
-
-.search-container button:last-child {
-    margin-right: 0;
+    background-color: #3a3a3a;
+    color: #e0e0e0;
 }
 
 #search-button {
-    background-color: #007BFF;
+    background-color: #007bff;
     color: #fff;
 }
 
@@ -134,11 +149,12 @@ h1 {
     background-color: #5a6268;
 }
 
+/* Footer */
 footer {
     text-align: center;
     margin-top: 30px;
     padding: 10px;
-    background-color: #333;
+    background-color: #1e1e1e;
     color: #fff;
 }
 
@@ -148,7 +164,6 @@ footer {
         margin: 10px;
         padding: 15px;
     }
-
     h1 {
         font-size: 2rem;
     }
