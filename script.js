@@ -45,11 +45,14 @@ document.addEventListener("DOMContentLoaded", function () {
             // Fonction de recherche
             function searchMonsters() {
                 let searchValue = searchInput.value.trim().toLowerCase();
-                searchValue = searchValue.replace(/&/g, 'and').replace(/et/g, 'and');
+                searchValue = searchValue.replace(/ & /g, ' and ').replace(/ et /g, ' and ');
                 const lowerCaseMonsterDates = Object.keys(monsterDates).reduce((acc, key) => {
                     acc[key.toLowerCase()] = monsterDates[key];
                     return acc;
                 }, {});
+
+                console.log(searchValue);
+                console.log(lowerCaseMonsterDates);
 
                 if (searchValue in lowerCaseMonsterDates) {
                     // Récupérer et formater les dates associées au monstre recherché
