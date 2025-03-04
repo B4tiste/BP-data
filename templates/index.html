@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion des Monstres - Thème Sombre</title>
+    <style>
+        /* Style général pour un thème sombre */
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #ffffff;
+        }
+
+        label,
+        p {
+            color: #cccccc;
+        }
+
+        input,
+        button {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+            border: 1px solid #333;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #6200ea;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #333;
+        }
+
+        /* Pour centrer le contenu */
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+
+        /* Style pour la zone de message */
+        #message_area {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Ajouter un Monstre</h1>
+
+        <!-- Section pour définir la date globale -->
+        <label for="global_date">Date actuelle :</label>
+        <input type="date" id="global_date">
+        <p>Cette date sera utilisée pour chaque ajout jusqu’à ce que vous la modifiiez.</p>
+
+        <!-- Saisie du nom du monstre avec suggestions -->
+        <input list="monster_list" id="monster_input" placeholder="Nom du monstre">
+        <datalist id="monster_list">
+            {% for name in monster_names %}
+            <option value="{{ name }}">
+                {% endfor %}
+        </datalist>
+
+        <button id="add_button">Ajouter</button>
+
+        <!-- Zone d'affichage des messages -->
+        <p id="message_area"></p>
+    </div>
+
+    <script>
+        function addMonster() {
+            const monsterName = document.getElementById("monster_input").value;
+            let date = document.getElementById("global_date").value;
+
+            if (!monsterName || !date) {
+                document.getElementById("message_area").textContent = "Veuillez saisir un nom de monstre et définir la date.";
+                return;
+            }
+
+            // Conversion du format de date de YYYY-MM-DD à DD/MM/YYYY
+            const parts = date.split('-'); // [YYYY, MM, DD]
+            if (parts.length === 3) {
+                date = parts[2] + "/" + parts[1] + "/" + parts[0];
+            }
+
+            fetch("/add", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ monster_name: monsterName, date: date })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        document.getElementById("message_area").textContent = "Données ajoutées avec succès.";
+                        document.getElementById("monster_input").value = "";
+                    } else {
+                        document.getElementById("message_area").textContent = "Erreur : " + data.message;
+                    }
+                })
+                .catch(err => {
+                    document.getElementById("message_area").textContent = "Erreur lors de l'ajout.";
+                });
+        }
+
+        // Soumission via clic sur le bouton
+        document.getElementById("add_button").addEventListener("click", addMonster);
+
+        // Soumission en appuyant sur la touche Entrée dans le champ du nom
+        document.getElementById("monster_input").addEventListener("keyup", function (event) {
+            if (event.key === "Enter") {
+                addMonster();
+            }
+        });
+    </script>
+</body>
+
+</html>
