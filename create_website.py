@@ -49,7 +49,7 @@ for image in sorted_images:
     if match:
         date_str = match.group(1)
         date_obj = datetime.strptime(date_str, '%d_%m_%Y')
-        formatted_date = date_obj.strftime('%d %m %Y')
+        formatted_date = date_obj.strftime('%d/%m/%Y')
     else:
         formatted_date = "Date inconnue"
     html_content += f'      <div class="card" data-image="{images_dir}/{image}" data-date="{formatted_date}">\n'

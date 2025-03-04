@@ -67,8 +67,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     return acc;
                 }, {});
 
-                console.log(lowerCaseMonsterDates);
-                console.log(searchValue);
 
                 if (searchValue in lowerCaseMonsterDates) {
                     const dates = lowerCaseMonsterDates[searchValue];
