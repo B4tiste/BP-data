@@ -35,11 +35,11 @@ html_content += '</head>\n<body>\n'
 html_content += '  <div class="container" id="grid-container">\n'
 html_content += '    <h1>Balance Patch Note Gallery</h1>\n'
 # Barre de recherche
-# html_content += '    <div class="search-container">\n'
-# html_content += '      <input type="text" id="monster-search" placeholder="Rechercher un monstre">\n'
-# html_content += '      <button id="search-button">Rechercher</button>\n'
-# html_content += '      <button id="reset-button">Réinitialiser</button>\n'
-# html_content += '    </div>\n'
+html_content += '    <div class="search-container">\n'
+html_content += '      <input type="text" id="monster-search" placeholder="Type a monster name...">\n'
+html_content += '      <button id="search-button">Search</button>\n'
+html_content += '      <button id="reset-button">Reset</button>\n'
+html_content += '    </div>\n'
 
 # Afficher les images dans une grille
 html_content += '    <div class="grid">\n'
@@ -49,7 +49,7 @@ for image in sorted_images:
     if match:
         date_str = match.group(1)
         date_obj = datetime.strptime(date_str, '%d_%m_%Y')
-        formatted_date = date_obj.strftime('%d %B %Y')
+        formatted_date = date_obj.strftime('%d %m %Y')
     else:
         formatted_date = "Date inconnue"
     html_content += f'      <div class="card" data-image="{images_dir}/{image}" data-date="{formatted_date}">\n'
@@ -63,8 +63,8 @@ html_content += '  </div>\n'
 html_content += '  <div class="detail-view" id="detail-view" style="display: none;">\n'
 html_content += '    <h2 id="detail-caption"></h2>\n'
 html_content += '    <div class="detail-buttons">\n'
-html_content += '      <button id="back-button">Retour</button>\n'
-html_content += '      <button id="toggle-negative-button">Voir original</button>\n'
+html_content += '      <button id="back-button">Back</button>\n'
+html_content += '      <button id="toggle-negative-button">Show white picture</button>\n'
 html_content += '    </div>\n'
 html_content += '    <img id="detail-img" src="" alt="Balance Patch en grand">\n'
 html_content += '  </div>\n'

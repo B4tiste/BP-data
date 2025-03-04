@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
             detailView.style.display = "block";
             // Par défaut, on s'assure que l'image est en mode négatif
             detailImg.style.filter = "invert(1)";
-            toggleNegativeButton.textContent = "Voir original";
+            toggleNegativeButton.textContent = "Show white picture";
         });
     });
 
@@ -35,10 +35,10 @@ document.addEventListener("DOMContentLoaded", function () {
     toggleNegativeButton.addEventListener("click", function() {
         if (detailImg.style.filter === 'invert(1)') {
             detailImg.style.filter = 'none';
-            toggleNegativeButton.textContent = "Afficher négatif";
+            toggleNegativeButton.textContent = "Show dark picture";
         } else {
             detailImg.style.filter = 'invert(1)';
-            toggleNegativeButton.textContent = "Voir original";
+            toggleNegativeButton.textContent = "Show white picture";
         }
     });
 
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const dateObj = new Date(parts[2], parts[1] - 1, parts[0]);
                 return dateObj.toLocaleDateString('fr-FR', {
                     day: '2-digit',
-                    month: 'long',
+                    month: '2-digit',
                     year: 'numeric'
                 });
             }
@@ -66,6 +66,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     acc[key.toLowerCase()] = monsterDates[key];
                     return acc;
                 }, {});
+
+                console.log(lowerCaseMonsterDates);
+                console.log(searchValue);
 
                 if (searchValue in lowerCaseMonsterDates) {
                     const dates = lowerCaseMonsterDates[searchValue];
