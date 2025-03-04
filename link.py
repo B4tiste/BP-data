@@ -10,6 +10,13 @@ if os.path.exists(json_file):
     with open(json_file, "r") as f:
         monster_dates = json.load(f)
 
+# Extract unique dates
+unique_dates = set()
+for dates in monster_dates.values():
+    unique_dates.update(dates)
+
+print("Unique dates in the JSON file:", unique_dates)
+
 # Main loop to add new data
 while True:
     i = input("Enter the monster name: ")
