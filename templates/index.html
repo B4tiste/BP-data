@@ -112,6 +112,10 @@
                     if (data.success) {
                         document.getElementById("message_area").textContent = "Données ajoutées avec succès.";
                         document.getElementById("monster_input").value = "";
+                        // Efface le message après 1500 millisecondes
+                        setTimeout(function () {
+                            document.getElementById("message_area").textContent = "";
+                        }, 1500);
                     } else {
                         document.getElementById("message_area").textContent = "Erreur : " + data.message;
                     }
