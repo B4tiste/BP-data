@@ -110,12 +110,12 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
-                        document.getElementById("message_area").textContent = "Données ajoutées avec succès.";
+                        document.getElementById("message_area").textContent = "Données ajoutées avec succès : " + JSON.stringify({ monster_name: monsterName, date: date });
                         document.getElementById("monster_input").value = "";
                         // Efface le message après 1500 millisecondes
                         setTimeout(function () {
                             document.getElementById("message_area").textContent = "";
-                        }, 1500);
+                        }, 3000);
                     } else {
                         document.getElementById("message_area").textContent = "Erreur : " + data.message;
                     }
