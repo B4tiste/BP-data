@@ -42,66 +42,66 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Charger le fichier JSON contenant les dates associées aux monstres
-    fetch('monster_dates.json')
-        .then(response => response.json())
-        .then(monsterDates => {
+    // // Charger le fichier JSON contenant les dates associées aux monstres
+    // fetch('monster_dates.json')
+    //     .then(response => response.json())
+    //     .then(monsterDates => {
 
-            // Fonction qui convertit une date "DD/MM/YYYY" en format "DD mois YYYY"
-            function formatDate(dateStr) {
-                const parts = dateStr.split('/');
-                const dateObj = new Date(parts[2], parts[1] - 1, parts[0]);
-                return dateObj.toLocaleDateString('fr-FR', {
-                    day: '2-digit',
-                    month: '2-digit',
-                    year: 'numeric'
-                });
-            }
+    //         // Fonction qui convertit une date "DD/MM/YYYY" en format "DD mois YYYY"
+    //         function formatDate(dateStr) {
+    //             const parts = dateStr.split('/');
+    //             const dateObj = new Date(parts[2], parts[1] - 1, parts[0]);
+    //             return dateObj.toLocaleDateString('fr-FR', {
+    //                 day: '2-digit',
+    //                 month: '2-digit',
+    //                 year: 'numeric'
+    //             });
+    //         }
 
-            // Fonction de recherche
-            function searchMonsters() {
-                let searchValue = searchInput.value.trim().toLowerCase();
-                searchValue = searchValue.replace(/ & /g, ' and ').replace(/ et /g, ' and ');
-                const lowerCaseMonsterDates = Object.keys(monsterDates).reduce((acc, key) => {
-                    acc[key.toLowerCase()] = monsterDates[key];
-                    return acc;
-                }, {});
+    //         // Fonction de recherche
+    //         function searchMonsters() {
+    //             let searchValue = searchInput.value.trim().toLowerCase();
+    //             searchValue = searchValue.replace(/ & /g, ' and ').replace(/ et /g, ' and ');
+    //             const lowerCaseMonsterDates = Object.keys(monsterDates).reduce((acc, key) => {
+    //                 acc[key.toLowerCase()] = monsterDates[key];
+    //                 return acc;
+    //             }, {});
 
 
-                if (searchValue in lowerCaseMonsterDates) {
-                    const dates = lowerCaseMonsterDates[searchValue];
-                    const formattedDates = dates.map(dateStr => formatDate(dateStr));
+    //             if (searchValue in lowerCaseMonsterDates) {
+    //                 const dates = lowerCaseMonsterDates[searchValue];
+    //                 const formattedDates = dates.map(dateStr => formatDate(dateStr));
 
-                    document.querySelectorAll('.card').forEach(card => {
-                        const cardDate = card.getAttribute('data-date');
-                        if (formattedDates.includes(cardDate)) {
-                            card.style.display = 'block';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
-                } else {
-                    alert("Monstre non trouvé !");
-                }
-            }
+    //                 document.querySelectorAll('.card').forEach(card => {
+    //                     const cardDate = card.getAttribute('data-date');
+    //                     if (formattedDates.includes(cardDate)) {
+    //                         card.style.display = 'block';
+    //                     } else {
+    //                         card.style.display = 'none';
+    //                     }
+    //                 });
+    //             } else {
+    //                 alert("Monstre non trouvé !");
+    //             }
+    //         }
 
-            // Recherche sur clic et sur appui sur ENTREE
-            searchButton.addEventListener('click', searchMonsters);
-            searchInput.addEventListener('keydown', function (event) {
-                if (event.key === 'Enter') {
-                    searchMonsters();
-                }
-            });
+    //         // Recherche sur clic et sur appui sur ENTREE
+    //         searchButton.addEventListener('click', searchMonsters);
+    //         searchInput.addEventListener('keydown', function (event) {
+    //             if (event.key === 'Enter') {
+    //                 searchMonsters();
+    //             }
+    //         });
 
-            // Réinitialisation de la recherche
-            resetButton.addEventListener('click', function () {
-                searchInput.value = '';
-                document.querySelectorAll('.card').forEach(card => {
-                    card.style.display = 'block';
-                });
-            });
-        })
-        .catch(error => {
-            console.error('Erreur lors du chargement du fichier JSON:', error);
-        });
+    //         // Réinitialisation de la recherche
+    //         resetButton.addEventListener('click', function () {
+    //             searchInput.value = '';
+    //             document.querySelectorAll('.card').forEach(card => {
+    //                 card.style.display = 'block';
+    //             });
+    //         });
+    //     })
+    //     .catch(error => {
+    //         console.error('Erreur lors du chargement du fichier JSON:', error);
+    //     });
 });
