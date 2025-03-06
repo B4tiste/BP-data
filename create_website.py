@@ -35,11 +35,12 @@ html_content += '</head>\n<body>\n'
 html_content += '  <div class="container" id="grid-container">\n'
 html_content += '    <h1>Balance Patch Note Gallery</h1>\n'
 # Barre de recherche
-# html_content += '    <div class="search-container">\n'
-# html_content += '      <input type="text" id="monster-search" placeholder="Type a monster name...">\n'
-# html_content += '      <button id="search-button">Search</button>\n'
-# html_content += '      <button id="reset-button">Reset</button>\n'
-# html_content += '    </div>\n'
+html_content += '    <div class="search-container">\n'
+html_content += '      <input type="text" id="monster-search" placeholder="Type a monster name...">\n'
+html_content += '      <button id="search-button">Search</button>\n'
+html_content += '      <button id="reset-button">Reset</button>\n'
+html_content += '    </div>\n'
+html_content += '    <div id="search-results" class="search-results"></div>\n'
 
 # Afficher les images dans une grille
 html_content += '    <div class="grid">\n'
