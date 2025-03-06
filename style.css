@@ -96,7 +96,7 @@ h2 {
     color: #e0e0e0;
     border: none;
     border-radius: 4px;
-    margin: 0 10px; /* Optional spacing between buttons */
+    margin: 0 10px;
 }
 
 /* Barre de recherche */
@@ -172,4 +172,93 @@ footer {
     h1 {
         font-size: 2rem;
     }
+}
+
+/* ---------------------------- */
+/* Styles pour les nouveaux éléments */
+
+/* Onglets */
+.tab-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.tab-button {
+    padding: 10px 20px;
+    margin: 0 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #3a3a3a;
+    color: #e0e0e0;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.tab-button.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Listes et éléments dans la section Stats */
+.stats-columns {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.stats-column {
+    flex: 1;
+    margin: 10px;
+    min-width: 300px;
+}
+
+.stats-column ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.stats-column li {
+    padding: 5px 10px;
+    border-bottom: 1px solid #444;
+}
+
+/* Boutons More/Less */
+#more-bp-button,
+#more-monster-button {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    background-color: #3a3a3a;
+    color: #e0e0e0;
+    border: none;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+/* Style pour la liste des monstres dans l'onglet "Liste" */
+/* Utilisation de colonnes pour occuper toute la largeur et réduire le scroll vertical */
+#list-container ul {
+    column-count: 4; /* Ajustez le nombre de colonnes selon vos besoins */
+    column-gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#list-container li {
+    break-inside: avoid;
+    padding: 5px 0;
+    border-bottom: 1px solid #444;
+}
+
+/* Style optionnel pour un index alphabétique si vous ajoutez des séparateurs */
+/* Par exemple, chaque lettre en tête de groupe */
+.letter-index {
+    font-weight: bold;
+    margin-top: 20px;
+    /* Force le saut de colonne pour séparer les groupes si souhaité */
+    break-before: column;
 }

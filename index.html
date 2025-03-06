@@ -4,234 +4,1616 @@
   <meta charset="UTF-8">
   <title>BP Gallery</title>
   <link rel="stylesheet" type="text/css" href="style.css">
+  <style>
+    /* Styles pour les onglets */
+    .tab-container { display: flex; justify-content: center; margin-top: 20px; }
+    .tab-button { padding: 10px 20px; margin: 0 5px; font-size: 1rem; cursor: pointer; background-color: #3a3a3a; color: #e0e0e0; border: none; border-radius: 4px; transition: background-color 0.3s; }
+    .tab-button.active { background-color: #007bff; color: #fff; }
+    /* Styles pour les colonnes dans l'onglet Stats */
+    .stats-columns { display: flex; justify-content: space-between; flex-wrap: wrap; }
+    .stats-column { flex: 1; margin: 10px; min-width: 300px; }
+    .hidden { display: none; }
+  </style>
 </head>
 <body>
-  <div class="container" id="grid-container">
-    <h1>Balance Patch Note Gallery</h1>
-    <div class="search-container">
-      <input type="text" id="monster-search" placeholder="Type a monster name...">
-      <button id="search-button">Search</button>
-      <button id="reset-button">Reset</button>
+  <div class="tab-container">
+    <button class="tab-button active" id="gallery-tab">BP List</button>
+    <button class="tab-button" id="stats-tab">BP & Monsters Stats</button>
+    <button class="tab-button" id="list-tab">Monsters List</button>
+  </div>
+  <div id="gallery-container">
+    <div class="container" id="grid-container">
+      <h1>Balance Patch Note Gallery</h1>
+      <div class="search-container">
+        <input type="text" id="monster-search" placeholder="Type a monster name...">
+        <button id="search-button">Search</button>
+        <button id="reset-button">Reset</button>
+      </div>
+      <div id="search-results" class="search-results"></div>
+      <div class="grid">
+        <div class="card" data-image="images/skill_balance_24_01_2025.png" data-date="24/01/2025">
+          <p class="date">24/01/2025</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_27_11_2024.png" data-date="27/11/2024">
+          <p class="date">27/11/2024</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_29_09_2024.png" data-date="29/09/2024">
+          <p class="date">29/09/2024</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_24_07_2024.png" data-date="24/07/2024">
+          <p class="date">24/07/2024</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_29_05_2024.png" data-date="29/05/2024">
+          <p class="date">29/05/2024</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_27_03_2024.png" data-date="27/03/2024">
+          <p class="date">27/03/2024</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_14_02_2024.png" data-date="14/02/2024">
+          <p class="date">14/02/2024</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_30_01_2024.png" data-date="30/01/2024">
+          <p class="date">30/01/2024</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_28_11_2023.png" data-date="28/11/2023">
+          <p class="date">28/11/2023</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_26_09_2023.png" data-date="26/09/2023">
+          <p class="date">26/09/2023</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_13_09_2023.png" data-date="13/09/2023">
+          <p class="date">13/09/2023</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_28_07_2023.png" data-date="28/07/2023">
+          <p class="date">28/07/2023</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_30_05_2023.png" data-date="30/05/2023">
+          <p class="date">30/05/2023</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_28_03_2023.png" data-date="28/03/2023">
+          <p class="date">28/03/2023</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_29_01_2023.png" data-date="29/01/2023">
+          <p class="date">29/01/2023</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_11_12_2022.png" data-date="11/12/2022">
+          <p class="date">11/12/2022</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_28_11_2022.png" data-date="28/11/2022">
+          <p class="date">28/11/2022</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_28_09_2022.png" data-date="28/09/2022">
+          <p class="date">28/09/2022</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_29_07_2022.png" data-date="29/07/2022">
+          <p class="date">29/07/2022</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_02_06_2022.png" data-date="02/06/2022">
+          <p class="date">02/06/2022</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_30_05_2022.png" data-date="30/05/2022">
+          <p class="date">30/05/2022</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_27_01_2022.png" data-date="27/01/2022">
+          <p class="date">27/01/2022</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_29_11_2021.png" data-date="29/11/2021">
+          <p class="date">29/11/2021</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_03_10_2021.png" data-date="03/10/2021">
+          <p class="date">03/10/2021</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_11_07_2021.png" data-date="11/07/2021">
+          <p class="date">11/07/2021</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_28_06_2021.png" data-date="28/06/2021">
+          <p class="date">28/06/2021</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_30_03_2021.png" data-date="30/03/2021">
+          <p class="date">30/03/2021</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_08_03_2021.png" data-date="08/03/2021">
+          <p class="date">08/03/2021</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_15_01_2021.png" data-date="15/01/2021">
+          <p class="date">15/01/2021</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_28_09_2020.png" data-date="28/09/2020">
+          <p class="date">28/09/2020</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_31_08_2020.png" data-date="31/08/2020">
+          <p class="date">31/08/2020</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_29_06_2020.png" data-date="29/06/2020">
+          <p class="date">29/06/2020</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_27_03_2020.png" data-date="27/03/2020">
+          <p class="date">27/03/2020</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_13_03_2020.png" data-date="13/03/2020">
+          <p class="date">13/03/2020</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_23_01_2020.png" data-date="23/01/2020">
+          <p class="date">23/01/2020</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_07_01_2020.png" data-date="07/01/2020">
+          <p class="date">07/01/2020</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_09_11_2019.png" data-date="09/11/2019">
+          <p class="date">09/11/2019</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_29_10_2019.png" data-date="29/10/2019">
+          <p class="date">29/10/2019</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_28_08_2019.png" data-date="28/08/2019">
+          <p class="date">28/08/2019</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_29_07_2019.png" data-date="29/07/2019">
+          <p class="date">29/07/2019</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_28_05_2019.png" data-date="28/05/2019">
+          <p class="date">28/05/2019</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_30_03_2019.png" data-date="30/03/2019">
+          <p class="date">30/03/2019</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_20_12_2018.png" data-date="20/12/2018">
+          <p class="date">20/12/2018</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_30_08_2018.png" data-date="30/08/2018">
+          <p class="date">30/08/2018</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_04_07_2018.png" data-date="04/07/2018">
+          <p class="date">04/07/2018</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_27_04_2018.png" data-date="27/04/2018">
+          <p class="date">27/04/2018</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_29_03_2018.png" data-date="29/03/2018">
+          <p class="date">29/03/2018</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_29_01_2018.png" data-date="29/01/2018">
+          <p class="date">29/01/2018</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_29_11_2017.png" data-date="29/11/2017">
+          <p class="date">29/11/2017</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_28_09_2017.png" data-date="28/09/2017">
+          <p class="date">28/09/2017</p>
+          <p class="title">Balance Patch</p>
+        </div>
+        <div class="card" data-image="images/skill_balance_30_08_2017.png" data-date="30/08/2017">
+          <p class="date">30/08/2017</p>
+          <p class="title">Balance Patch</p>
+        </div>
+      </div>
     </div>
-    <div id="search-results" class="search-results"></div>
-    <div class="grid">
-      <div class="card" data-image="images/skill_balance_24_01_2025.png" data-date="24/01/2025">
-        <p class="date">24/01/2025</p>
-        <p class="title">Balance Patch</p>
+    <div class="detail-view" id="detail-view" style="display: none;">
+      <h2 id="detail-caption"></h2>
+      <div class="detail-buttons">
+        <button id="back-button">Back</button>
+        <button id="toggle-negative-button">Show white picture</button>
       </div>
-      <div class="card" data-image="images/skill_balance_27_11_2024.png" data-date="27/11/2024">
-        <p class="date">27/11/2024</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_29_09_2024.png" data-date="29/09/2024">
-        <p class="date">29/09/2024</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_24_07_2024.png" data-date="24/07/2024">
-        <p class="date">24/07/2024</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_29_05_2024.png" data-date="29/05/2024">
-        <p class="date">29/05/2024</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_27_03_2024.png" data-date="27/03/2024">
-        <p class="date">27/03/2024</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_14_02_2024.png" data-date="14/02/2024">
-        <p class="date">14/02/2024</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_30_01_2024.png" data-date="30/01/2024">
-        <p class="date">30/01/2024</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_28_11_2023.png" data-date="28/11/2023">
-        <p class="date">28/11/2023</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_26_09_2023.png" data-date="26/09/2023">
-        <p class="date">26/09/2023</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_13_09_2023.png" data-date="13/09/2023">
-        <p class="date">13/09/2023</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_28_07_2023.png" data-date="28/07/2023">
-        <p class="date">28/07/2023</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_30_05_2023.png" data-date="30/05/2023">
-        <p class="date">30/05/2023</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_28_03_2023.png" data-date="28/03/2023">
-        <p class="date">28/03/2023</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_29_01_2023.png" data-date="29/01/2023">
-        <p class="date">29/01/2023</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_11_12_2022.png" data-date="11/12/2022">
-        <p class="date">11/12/2022</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_28_11_2022.png" data-date="28/11/2022">
-        <p class="date">28/11/2022</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_28_09_2022.png" data-date="28/09/2022">
-        <p class="date">28/09/2022</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_29_07_2022.png" data-date="29/07/2022">
-        <p class="date">29/07/2022</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_02_06_2022.png" data-date="02/06/2022">
-        <p class="date">02/06/2022</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_30_05_2022.png" data-date="30/05/2022">
-        <p class="date">30/05/2022</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_27_01_2022.png" data-date="27/01/2022">
-        <p class="date">27/01/2022</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_29_11_2021.png" data-date="29/11/2021">
-        <p class="date">29/11/2021</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_03_10_2021.png" data-date="03/10/2021">
-        <p class="date">03/10/2021</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_11_07_2021.png" data-date="11/07/2021">
-        <p class="date">11/07/2021</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_28_06_2021.png" data-date="28/06/2021">
-        <p class="date">28/06/2021</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_30_03_2021.png" data-date="30/03/2021">
-        <p class="date">30/03/2021</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_08_03_2021.png" data-date="08/03/2021">
-        <p class="date">08/03/2021</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_15_01_2021.png" data-date="15/01/2021">
-        <p class="date">15/01/2021</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_28_09_2020.png" data-date="28/09/2020">
-        <p class="date">28/09/2020</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_31_08_2020.png" data-date="31/08/2020">
-        <p class="date">31/08/2020</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_29_06_2020.png" data-date="29/06/2020">
-        <p class="date">29/06/2020</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_27_03_2020.png" data-date="27/03/2020">
-        <p class="date">27/03/2020</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_13_03_2020.png" data-date="13/03/2020">
-        <p class="date">13/03/2020</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_23_01_2020.png" data-date="23/01/2020">
-        <p class="date">23/01/2020</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_07_01_2020.png" data-date="07/01/2020">
-        <p class="date">07/01/2020</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_09_11_2019.png" data-date="09/11/2019">
-        <p class="date">09/11/2019</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_29_10_2019.png" data-date="29/10/2019">
-        <p class="date">29/10/2019</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_28_08_2019.png" data-date="28/08/2019">
-        <p class="date">28/08/2019</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_29_07_2019.png" data-date="29/07/2019">
-        <p class="date">29/07/2019</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_28_05_2019.png" data-date="28/05/2019">
-        <p class="date">28/05/2019</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_30_03_2019.png" data-date="30/03/2019">
-        <p class="date">30/03/2019</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_20_12_2018.png" data-date="20/12/2018">
-        <p class="date">20/12/2018</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_30_08_2018.png" data-date="30/08/2018">
-        <p class="date">30/08/2018</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_04_07_2018.png" data-date="04/07/2018">
-        <p class="date">04/07/2018</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_27_04_2018.png" data-date="27/04/2018">
-        <p class="date">27/04/2018</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_29_03_2018.png" data-date="29/03/2018">
-        <p class="date">29/03/2018</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_29_01_2018.png" data-date="29/01/2018">
-        <p class="date">29/01/2018</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_29_11_2017.png" data-date="29/11/2017">
-        <p class="date">29/11/2017</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_28_09_2017.png" data-date="28/09/2017">
-        <p class="date">28/09/2017</p>
-        <p class="title">Balance Patch</p>
-      </div>
-      <div class="card" data-image="images/skill_balance_30_08_2017.png" data-date="30/08/2017">
-        <p class="date">30/08/2017</p>
-        <p class="title">Balance Patch</p>
+      <img id="detail-img" src="" alt="Balance Patch en grand" style="filter: invert(1);">
+    </div>
+  </div>
+  <div id="stats-container" style="display: none;">
+    <div class="container">
+      <div class="stats-columns">
+        <div class="stats-column">
+          <h2>Balance Patch Stats</h2>
+          <ul id="bp-stats-list">
+            <li>29/05/2024 : 62 monstres</li>
+            <li>27/01/2022 : 58 monstres</li>
+            <li>28/03/2023 : 57 monstres</li>
+            <li>27/11/2024 : 54 monstres</li>
+            <li>03/10/2021 : 54 monstres</li>
+            <li>15/01/2021 : 51 monstres</li>
+            <li>30/01/2024 : 51 monstres</li>
+            <li>30/05/2023 : 49 monstres</li>
+            <li>29/06/2020 : 49 monstres</li>
+            <li>28/11/2022 : 49 monstres</li>
+            <li class="more-bp hidden">29/09/2024 : 47 monstres</li>
+            <li class="more-bp hidden">27/03/2024 : 47 monstres</li>
+            <li class="more-bp hidden">28/11/2023 : 46 monstres</li>
+            <li class="more-bp hidden">28/07/2023 : 45 monstres</li>
+            <li class="more-bp hidden">29/01/2023 : 43 monstres</li>
+            <li class="more-bp hidden">30/05/2022 : 43 monstres</li>
+            <li class="more-bp hidden">29/11/2021 : 43 monstres</li>
+            <li class="more-bp hidden">20/12/2018 : 42 monstres</li>
+            <li class="more-bp hidden">30/03/2021 : 42 monstres</li>
+            <li class="more-bp hidden">24/07/2024 : 41 monstres</li>
+            <li class="more-bp hidden">13/03/2020 : 39 monstres</li>
+            <li class="more-bp hidden">28/06/2021 : 39 monstres</li>
+            <li class="more-bp hidden">24/01/2025 : 38 monstres</li>
+            <li class="more-bp hidden">29/07/2022 : 38 monstres</li>
+            <li class="more-bp hidden">29/10/2019 : 37 monstres</li>
+            <li class="more-bp hidden">26/09/2023 : 36 monstres</li>
+            <li class="more-bp hidden">28/09/2022 : 34 monstres</li>
+            <li class="more-bp hidden">07/01/2020 : 32 monstres</li>
+            <li class="more-bp hidden">30/08/2018 : 31 monstres</li>
+            <li class="more-bp hidden">29/01/2018 : 31 monstres</li>
+            <li class="more-bp hidden">28/09/2020 : 30 monstres</li>
+            <li class="more-bp hidden">29/07/2019 : 29 monstres</li>
+            <li class="more-bp hidden">27/04/2018 : 29 monstres</li>
+            <li class="more-bp hidden">30/08/2017 : 29 monstres</li>
+            <li class="more-bp hidden">30/03/2019 : 28 monstres</li>
+            <li class="more-bp hidden">04/07/2018 : 24 monstres</li>
+            <li class="more-bp hidden">29/11/2017 : 22 monstres</li>
+            <li class="more-bp hidden">28/05/2019 : 21 monstres</li>
+            <li class="more-bp hidden">27/03/2020 : 15 monstres</li>
+            <li class="more-bp hidden">29/03/2018 : 10 monstres</li>
+            <li class="more-bp hidden">28/08/2019 : 5 monstres</li>
+            <li class="more-bp hidden">28/09/2017 : 5 monstres</li>
+            <li class="more-bp hidden">23/01/2020 : 1 monstres</li>
+            <li class="more-bp hidden">14/02/2024 : 1 monstres</li>
+            <li class="more-bp hidden">11/12/2022 : 1 monstres</li>
+            <li class="more-bp hidden">13/09/2023 : 1 monstres</li>
+            <li class="more-bp hidden">11/07/2021 : 1 monstres</li>
+            <li class="more-bp hidden">09/11/2019 : 1 monstres</li>
+            <li class="more-bp hidden">02/06/2022 : 1 monstres</li>
+            <li class="more-bp hidden">08/03/0001 : 1 monstres</li>
+          </ul>
+          <button id="more-bp-button">More</button>
+        </div>
+        <div class="stats-column">
+          <h2>Monsters Stats</h2>
+          <ul id="monster-stats-list">
+            <li>Shazam : 9 apparitions</li>
+            <li>Josephine : 8 apparitions</li>
+            <li>Rahul : 8 apparitions</li>
+            <li>Kumar : 8 apparitions</li>
+            <li>Kashmir : 7 apparitions</li>
+            <li>Chiwu : 7 apparitions</li>
+            <li>Grogen : 7 apparitions</li>
+            <li>Ritesh : 7 apparitions</li>
+            <li>Chandra : 7 apparitions</li>
+            <li>Shi hou : 7 apparitions</li>
+            <li>Jaara : 7 apparitions</li>
+            <li>Lora : 7 apparitions</li>
+            <li>Teshar : 7 apparitions</li>
+            <li>Lexy : 6 apparitions</li>
+            <li>Tanya : 6 apparitions</li>
+            <li class="more-monsters hidden">Christina : 6 apparitions</li>
+            <li class="more-monsters hidden">Cichlid : 6 apparitions</li>
+            <li class="more-monsters hidden">Liesel : 6 apparitions</li>
+            <li class="more-monsters hidden">Sekhmet : 6 apparitions</li>
+            <li class="more-monsters hidden">Okeanos : 6 apparitions</li>
+            <li class="more-monsters hidden">Manannan : 6 apparitions</li>
+            <li class="more-monsters hidden">Son zhang lao : 6 apparitions</li>
+            <li class="more-monsters hidden">Eludia : 6 apparitions</li>
+            <li class="more-monsters hidden">Vancliffe : 6 apparitions</li>
+            <li class="more-monsters hidden">Thebae : 6 apparitions</li>
+            <li class="more-monsters hidden">Akhamamir : 6 apparitions</li>
+            <li class="more-monsters hidden">Velajuel : 6 apparitions</li>
+            <li class="more-monsters hidden">Fermion : 6 apparitions</li>
+            <li class="more-monsters hidden">Chow : 6 apparitions</li>
+            <li class="more-monsters hidden">Arnold : 6 apparitions</li>
+            <li class="more-monsters hidden">Taor : 6 apparitions</li>
+            <li class="more-monsters hidden">Helena : 6 apparitions</li>
+            <li class="more-monsters hidden">Zerath : 6 apparitions</li>
+            <li class="more-monsters hidden">Mi ying : 5 apparitions</li>
+            <li class="more-monsters hidden">Moore : 5 apparitions</li>
+            <li class="more-monsters hidden">Xing zhe : 5 apparitions</li>
+            <li class="more-monsters hidden">Lucas : 5 apparitions</li>
+            <li class="more-monsters hidden">Argen : 5 apparitions</li>
+            <li class="more-monsters hidden">Cadiz : 5 apparitions</li>
+            <li class="more-monsters hidden">Zaiross : 5 apparitions</li>
+            <li class="more-monsters hidden">Poseidon : 5 apparitions</li>
+            <li class="more-monsters hidden">Pontos : 5 apparitions</li>
+            <li class="more-monsters hidden">Shahat : 5 apparitions</li>
+            <li class="more-monsters hidden">Rakan : 5 apparitions</li>
+            <li class="more-monsters hidden">Beth : 5 apparitions</li>
+            <li class="more-monsters hidden">Onyx : 5 apparitions</li>
+            <li class="more-monsters hidden">Alicia : 5 apparitions</li>
+            <li class="more-monsters hidden">Daphnis : 5 apparitions</li>
+            <li class="more-monsters hidden">Ariel : 5 apparitions</li>
+            <li class="more-monsters hidden">Eladriel : 5 apparitions</li>
+            <li class="more-monsters hidden">Louise : 5 apparitions</li>
+            <li class="more-monsters hidden">Jeanne : 5 apparitions</li>
+            <li class="more-monsters hidden">Abigail : 5 apparitions</li>
+            <li class="more-monsters hidden">Charlotte : 5 apparitions</li>
+            <li class="more-monsters hidden">Bernadotte : 5 apparitions</li>
+            <li class="more-monsters hidden">Giou : 5 apparitions</li>
+            <li class="more-monsters hidden">Bael : 5 apparitions</li>
+            <li class="more-monsters hidden">Sigmarus : 5 apparitions</li>
+            <li class="more-monsters hidden">Chloe : 5 apparitions</li>
+            <li class="more-monsters hidden">Shizuka : 5 apparitions</li>
+            <li class="more-monsters hidden">Haegang : 5 apparitions</li>
+            <li class="more-monsters hidden">Vanessa : 5 apparitions</li>
+            <li class="more-monsters hidden">Mei hou wang : 5 apparitions</li>
+            <li class="more-monsters hidden">Xiong fei : 5 apparitions</li>
+            <li class="more-monsters hidden">Isabelle : 5 apparitions</li>
+            <li class="more-monsters hidden">Natalie : 5 apparitions</li>
+            <li class="more-monsters hidden">Talisman : 5 apparitions</li>
+            <li class="more-monsters hidden">Abellio : 5 apparitions</li>
+            <li class="more-monsters hidden">Veromos : 5 apparitions</li>
+            <li class="more-monsters hidden">Raki : 5 apparitions</li>
+            <li class="more-monsters hidden">Eleanor : 5 apparitions</li>
+            <li class="more-monsters hidden">Laika : 5 apparitions</li>
+            <li class="more-monsters hidden">Brandia : 5 apparitions</li>
+            <li class="more-monsters hidden">Berghild : 4 apparitions</li>
+            <li class="more-monsters hidden">Valdemar : 4 apparitions</li>
+            <li class="more-monsters hidden">Barbara : 4 apparitions</li>
+            <li class="more-monsters hidden">Julianne : 4 apparitions</li>
+            <li class="more-monsters hidden">Giana : 4 apparitions</li>
+            <li class="more-monsters hidden">Zima : 4 apparitions</li>
+            <li class="more-monsters hidden">Smicer : 4 apparitions</li>
+            <li class="more-monsters hidden">Pungbaek : 4 apparitions</li>
+            <li class="more-monsters hidden">Akroma : 4 apparitions</li>
+            <li class="more-monsters hidden">Irene : 4 apparitions</li>
+            <li class="more-monsters hidden">Arcana : 4 apparitions</li>
+            <li class="more-monsters hidden">Ryan : 4 apparitions</li>
+            <li class="more-monsters hidden">Logan : 4 apparitions</li>
+            <li class="more-monsters hidden">Tyron : 4 apparitions</li>
+            <li class="more-monsters hidden">Tetra : 4 apparitions</li>
+            <li class="more-monsters hidden">Platy : 4 apparitions</li>
+            <li class="more-monsters hidden">Molly : 4 apparitions</li>
+            <li class="more-monsters hidden">Vendhan : 4 apparitions</li>
+            <li class="more-monsters hidden">Chakra : 4 apparitions</li>
+            <li class="more-monsters hidden">Momo : 4 apparitions</li>
+            <li class="more-monsters hidden">Triton : 4 apparitions</li>
+            <li class="more-monsters hidden">Taranys : 4 apparitions</li>
+            <li class="more-monsters hidden">Duamutef : 4 apparitions</li>
+            <li class="more-monsters hidden">Aegir : 4 apparitions</li>
+            <li class="more-monsters hidden">Tesarion : 4 apparitions</li>
+            <li class="more-monsters hidden">Borgnine : 4 apparitions</li>
+            <li class="more-monsters hidden">Windy : 4 apparitions</li>
+            <li class="more-monsters hidden">Nicki : 4 apparitions</li>
+            <li class="more-monsters hidden">Veronica : 4 apparitions</li>
+            <li class="more-monsters hidden">Zeratu : 4 apparitions</li>
+            <li class="more-monsters hidden">Alice : 4 apparitions</li>
+            <li class="more-monsters hidden">Elsharion : 4 apparitions</li>
+            <li class="more-monsters hidden">Maya : 4 apparitions</li>
+            <li class="more-monsters hidden">Korona : 4 apparitions</li>
+            <li class="more-monsters hidden">Draco : 4 apparitions</li>
+            <li class="more-monsters hidden">Artamiel : 4 apparitions</li>
+            <li class="more-monsters hidden">Theomars : 4 apparitions</li>
+            <li class="more-monsters hidden">Scarlett : 4 apparitions</li>
+            <li class="more-monsters hidden">Emily : 4 apparitions</li>
+            <li class="more-monsters hidden">Dorothy : 4 apparitions</li>
+            <li class="more-monsters hidden">Anavel : 4 apparitions</li>
+            <li class="more-monsters hidden">Rica : 4 apparitions</li>
+            <li class="more-monsters hidden">Tian lang : 4 apparitions</li>
+            <li class="more-monsters hidden">Kinki : 4 apparitions</li>
+            <li class="more-monsters hidden">Soha : 4 apparitions</li>
+            <li class="more-monsters hidden">Arang : 4 apparitions</li>
+            <li class="more-monsters hidden">Chamie : 4 apparitions</li>
+            <li class="more-monsters hidden">Tanzaite : 4 apparitions</li>
+            <li class="more-monsters hidden">Kunite : 4 apparitions</li>
+            <li class="more-monsters hidden">Jager : 4 apparitions</li>
+            <li class="more-monsters hidden">Gurkha : 4 apparitions</li>
+            <li class="more-monsters hidden">Zen : 4 apparitions</li>
+            <li class="more-monsters hidden">Conrad : 4 apparitions</li>
+            <li class="more-monsters hidden">Briand : 4 apparitions</li>
+            <li class="more-monsters hidden">Magnum : 4 apparitions</li>
+            <li class="more-monsters hidden">Seimei : 4 apparitions</li>
+            <li class="more-monsters hidden">Jeogun : 4 apparitions</li>
+            <li class="more-monsters hidden">Belial : 4 apparitions</li>
+            <li class="more-monsters hidden">Stella : 4 apparitions</li>
+            <li class="more-monsters hidden">Oliver : 4 apparitions</li>
+            <li class="more-monsters hidden">Dominic : 4 apparitions</li>
+            <li class="more-monsters hidden">Nana : 4 apparitions</li>
+            <li class="more-monsters hidden">Craka : 4 apparitions</li>
+            <li class="more-monsters hidden">Laima : 4 apparitions</li>
+            <li class="more-monsters hidden">Qitian dasheng : 4 apparitions</li>
+            <li class="more-monsters hidden">Jamire : 4 apparitions</li>
+            <li class="more-monsters hidden">Carcano : 4 apparitions</li>
+            <li class="more-monsters hidden">Ragdoll : 3 apparitions</li>
+            <li class="more-monsters hidden">Sagar : 3 apparitions</li>
+            <li class="more-monsters hidden">Dyeus : 3 apparitions</li>
+            <li class="more-monsters hidden">Jaduel and aepiah : 3 apparitions</li>
+            <li class="more-monsters hidden">Bloodya : 3 apparitions</li>
+            <li class="more-monsters hidden">Liliana : 3 apparitions</li>
+            <li class="more-monsters hidden">Coco : 3 apparitions</li>
+            <li class="more-monsters hidden">Psamathe : 3 apparitions</li>
+            <li class="more-monsters hidden">Zibala : 3 apparitions</li>
+            <li class="more-monsters hidden">Zenisek : 3 apparitions</li>
+            <li class="more-monsters hidden">Kovarci : 3 apparitions</li>
+            <li class="more-monsters hidden">Woonsa : 3 apparitions</li>
+            <li class="more-monsters hidden">Leona : 3 apparitions</li>
+            <li class="more-monsters hidden">Henrik : 3 apparitions</li>
+            <li class="more-monsters hidden">Tarnisha : 3 apparitions</li>
+            <li class="more-monsters hidden">Belita : 3 apparitions</li>
+            <li class="more-monsters hidden">Trevor : 3 apparitions</li>
+            <li class="more-monsters hidden">Karl : 3 apparitions</li>
+            <li class="more-monsters hidden">Shimitae : 3 apparitions</li>
+            <li class="more-monsters hidden">Eredas : 3 apparitions</li>
+            <li class="more-monsters hidden">Betta : 3 apparitions</li>
+            <li class="more-monsters hidden">Birgitta : 3 apparitions</li>
+            <li class="more-monsters hidden">Nyx : 3 apparitions</li>
+            <li class="more-monsters hidden">Cordelia : 3 apparitions</li>
+            <li class="more-monsters hidden">Vereesa : 3 apparitions</li>
+            <li class="more-monsters hidden">Hraesvelg : 3 apparitions</li>
+            <li class="more-monsters hidden">Mimiir : 3 apparitions</li>
+            <li class="more-monsters hidden">Byungchul : 3 apparitions</li>
+            <li class="more-monsters hidden">Angela : 3 apparitions</li>
+            <li class="more-monsters hidden">Ashour : 3 apparitions</li>
+            <li class="more-monsters hidden">Omar : 3 apparitions</li>
+            <li class="more-monsters hidden">Ahmed : 3 apparitions</li>
+            <li class="more-monsters hidden">Salah : 3 apparitions</li>
+            <li class="more-monsters hidden">Hathor : 3 apparitions</li>
+            <li class="more-monsters hidden">Benedict : 3 apparitions</li>
+            <li class="more-monsters hidden">Nisha : 3 apparitions</li>
+            <li class="more-monsters hidden">Solveig : 3 apparitions</li>
+            <li class="more-monsters hidden">Ritsu : 3 apparitions</li>
+            <li class="more-monsters hidden">Lucia : 3 apparitions</li>
+            <li class="more-monsters hidden">Asima : 3 apparitions</li>
+            <li class="more-monsters hidden">Isis : 3 apparitions</li>
+            <li class="more-monsters hidden">Douglas : 3 apparitions</li>
+            <li class="more-monsters hidden">Astar : 3 apparitions</li>
+            <li class="more-monsters hidden">Orion : 3 apparitions</li>
+            <li class="more-monsters hidden">Aquila : 3 apparitions</li>
+            <li class="more-monsters hidden">Gemini : 3 apparitions</li>
+            <li class="more-monsters hidden">Hwahee : 3 apparitions</li>
+            <li class="more-monsters hidden">Surtr : 3 apparitions</li>
+            <li class="more-monsters hidden">Carrack : 3 apparitions</li>
+            <li class="more-monsters hidden">Ariana : 3 apparitions</li>
+            <li class="more-monsters hidden">Lapis : 3 apparitions</li>
+            <li class="more-monsters hidden">Lupinus : 3 apparitions</li>
+            <li class="more-monsters hidden">Iris : 3 apparitions</li>
+            <li class="more-monsters hidden">Lanett : 3 apparitions</li>
+            <li class="more-monsters hidden">Ophilia : 3 apparitions</li>
+            <li class="more-monsters hidden">Kyle : 3 apparitions</li>
+            <li class="more-monsters hidden">Delphoi : 3 apparitions</li>
+            <li class="more-monsters hidden">Tilasha : 3 apparitions</li>
+            <li class="more-monsters hidden">Patrick : 3 apparitions</li>
+            <li class="more-monsters hidden">Lionel : 3 apparitions</li>
+            <li class="more-monsters hidden">Morris : 3 apparitions</li>
+            <li class="more-monsters hidden">Rigel : 3 apparitions</li>
+            <li class="more-monsters hidden">Smokey : 3 apparitions</li>
+            <li class="more-monsters hidden">Misty : 3 apparitions</li>
+            <li class="more-monsters hidden">Miho : 3 apparitions</li>
+            <li class="more-monsters hidden">Pralin : 3 apparitions</li>
+            <li class="more-monsters hidden">Wedjat : 3 apparitions</li>
+            <li class="more-monsters hidden">Amber : 3 apparitions</li>
+            <li class="more-monsters hidden">Claire : 3 apparitions</li>
+            <li class="more-monsters hidden">Sonia : 3 apparitions</li>
+            <li class="more-monsters hidden">Eleni : 3 apparitions</li>
+            <li class="more-monsters hidden">Sonnet : 3 apparitions</li>
+            <li class="more-monsters hidden">Pater : 3 apparitions</li>
+            <li class="more-monsters hidden">Loren : 3 apparitions</li>
+            <li class="more-monsters hidden">Hannah : 3 apparitions</li>
+            <li class="more-monsters hidden">Manon : 3 apparitions</li>
+            <li class="more-monsters hidden">Akia : 3 apparitions</li>
+            <li class="more-monsters hidden">Selena : 3 apparitions</li>
+            <li class="more-monsters hidden">Isael : 3 apparitions</li>
+            <li class="more-monsters hidden">Su : 3 apparitions</li>
+            <li class="more-monsters hidden">Nephthys : 3 apparitions</li>
+            <li class="more-monsters hidden">Chacha : 3 apparitions</li>
+            <li class="more-monsters hidden">Camilla : 3 apparitions</li>
+            <li class="more-monsters hidden">Kaz : 3 apparitions</li>
+            <li class="more-monsters hidden">Jun : 3 apparitions</li>
+            <li class="more-monsters hidden">Kaito : 3 apparitions</li>
+            <li class="more-monsters hidden">Tosi : 3 apparitions</li>
+            <li class="more-monsters hidden">Sige : 3 apparitions</li>
+            <li class="more-monsters hidden">Trinity : 3 apparitions</li>
+            <li class="more-monsters hidden">Masha : 3 apparitions</li>
+            <li class="more-monsters hidden">Bellenus : 3 apparitions</li>
+            <li class="more-monsters hidden">Valantis : 3 apparitions</li>
+            <li class="more-monsters hidden">Shun : 3 apparitions</li>
+            <li class="more-monsters hidden">Fria : 3 apparitions</li>
+            <li class="more-monsters hidden">Clara : 3 apparitions</li>
+            <li class="more-monsters hidden">Ethna : 3 apparitions</li>
+            <li class="more-monsters hidden">Luer : 3 apparitions</li>
+            <li class="more-monsters hidden">Jean : 3 apparitions</li>
+            <li class="more-monsters hidden">Julien : 3 apparitions</li>
+            <li class="more-monsters hidden">Louis : 3 apparitions</li>
+            <li class="more-monsters hidden">Lagmaron : 3 apparitions</li>
+            <li class="more-monsters hidden">Praha : 3 apparitions</li>
+            <li class="more-monsters hidden">Verad : 3 apparitions</li>
+            <li class="more-monsters hidden">Katarina : 3 apparitions</li>
+            <li class="more-monsters hidden">Malite : 3 apparitions</li>
+            <li class="more-monsters hidden">Phenaka : 3 apparitions</li>
+            <li class="more-monsters hidden">Tomoe : 3 apparitions</li>
+            <li class="more-monsters hidden">Douman : 3 apparitions</li>
+            <li class="more-monsters hidden">Lumirecia : 3 apparitions</li>
+            <li class="more-monsters hidden">Oberon : 3 apparitions</li>
+            <li class="more-monsters hidden">Wolyung : 3 apparitions</li>
+            <li class="more-monsters hidden">Amelia : 3 apparitions</li>
+            <li class="more-monsters hidden">Alexandra : 3 apparitions</li>
+            <li class="more-monsters hidden">Sera : 3 apparitions</li>
+            <li class="more-monsters hidden">Anne : 3 apparitions</li>
+            <li class="more-monsters hidden">Cassie : 3 apparitions</li>
+            <li class="more-monsters hidden">Elenoa : 3 apparitions</li>
+            <li class="more-monsters hidden">Covenant : 3 apparitions</li>
+            <li class="more-monsters hidden">Carbine : 3 apparitions</li>
+            <li class="more-monsters hidden">Dragunov : 3 apparitions</li>
+            <li class="more-monsters hidden">Antares : 3 apparitions</li>
+            <li class="more-monsters hidden">Eluin : 3 apparitions</li>
+            <li class="more-monsters hidden">Adrian : 3 apparitions</li>
+            <li class="more-monsters hidden">Erwin : 3 apparitions</li>
+            <li class="more-monsters hidden">Isillen : 3 apparitions</li>
+            <li class="more-monsters hidden">Michelle : 3 apparitions</li>
+            <li class="more-monsters hidden">Enshia : 2 apparitions</li>
+            <li class="more-monsters hidden">Celestara : 2 apparitions</li>
+            <li class="more-monsters hidden">Jurgen : 2 apparitions</li>
+            <li class="more-monsters hidden">Hartmann : 2 apparitions</li>
+            <li class="more-monsters hidden">Vincent : 2 apparitions</li>
+            <li class="more-monsters hidden">Mark : 2 apparitions</li>
+            <li class="more-monsters hidden">Mizuki : 2 apparitions</li>
+            <li class="more-monsters hidden">Jade : 2 apparitions</li>
+            <li class="more-monsters hidden">Rebecca : 2 apparitions</li>
+            <li class="more-monsters hidden">Kacey : 2 apparitions</li>
+            <li class="more-monsters hidden">Shannon : 2 apparitions</li>
+            <li class="more-monsters hidden">Camaryn : 2 apparitions</li>
+            <li class="more-monsters hidden">Vritra : 2 apparitions</li>
+            <li class="more-monsters hidden">Tetsuya : 2 apparitions</li>
+            <li class="more-monsters hidden">Jeongnam : 2 apparitions</li>
+            <li class="more-monsters hidden">Karuel and lanoah : 2 apparitions</li>
+            <li class="more-monsters hidden">Sadiel and zeryah : 2 apparitions</li>
+            <li class="more-monsters hidden">Baretta : 2 apparitions</li>
+            <li class="more-monsters hidden">Aschubel : 2 apparitions</li>
+            <li class="more-monsters hidden">Usha : 2 apparitions</li>
+            <li class="more-monsters hidden">Magnus : 2 apparitions</li>
+            <li class="more-monsters hidden">Lars : 2 apparitions</li>
+            <li class="more-monsters hidden">Eirgar : 2 apparitions</li>
+            <li class="more-monsters hidden">Celia : 2 apparitions</li>
+            <li class="more-monsters hidden">Figaro : 2 apparitions</li>
+            <li class="more-monsters hidden">Trasar : 2 apparitions</li>
+            <li class="more-monsters hidden">Tirsa : 2 apparitions</li>
+            <li class="more-monsters hidden">Johanna : 2 apparitions</li>
+            <li class="more-monsters hidden">Hilda : 2 apparitions</li>
+            <li class="more-monsters hidden">Thomas : 2 apparitions</li>
+            <li class="more-monsters hidden">Jackson : 2 apparitions</li>
+            <li class="more-monsters hidden">Birman : 2 apparitions</li>
+            <li class="more-monsters hidden">Manx : 2 apparitions</li>
+            <li class="more-monsters hidden">Nebelung : 2 apparitions</li>
+            <li class="more-monsters hidden">Siamese : 2 apparitions</li>
+            <li class="more-monsters hidden">Bombay : 2 apparitions</li>
+            <li class="more-monsters hidden">Robo-p27 : 2 apparitions</li>
+            <li class="more-monsters hidden">Gapsoo : 2 apparitions</li>
+            <li class="more-monsters hidden">Euldong : 2 apparitions</li>
+            <li class="more-monsters hidden">Moogwang : 2 apparitions</li>
+            <li class="more-monsters hidden">Hrungnir : 2 apparitions</li>
+            <li class="more-monsters hidden">Robo-r40 : 2 apparitions</li>
+            <li class="more-monsters hidden">Savannah : 2 apparitions</li>
+            <li class="more-monsters hidden">Chasun : 2 apparitions</li>
+            <li class="more-monsters hidden">Sophia : 2 apparitions</li>
+            <li class="more-monsters hidden">Eva : 2 apparitions</li>
+            <li class="more-monsters hidden">Kiki : 2 apparitions</li>
+            <li class="more-monsters hidden">Mo long : 2 apparitions</li>
+            <li class="more-monsters hidden">Mikene : 2 apparitions</li>
+            <li class="more-monsters hidden">Atenai : 2 apparitions</li>
+            <li class="more-monsters hidden">Icasha : 2 apparitions</li>
+            <li class="more-monsters hidden">Seara : 2 apparitions</li>
+            <li class="more-monsters hidden">Ren : 2 apparitions</li>
+            <li class="more-monsters hidden">Minato : 2 apparitions</li>
+            <li class="more-monsters hidden">Odin : 2 apparitions</li>
+            <li class="more-monsters hidden">Herteit : 2 apparitions</li>
+            <li class="more-monsters hidden">Reno : 2 apparitions</li>
+            <li class="more-monsters hidden">Ludo : 2 apparitions</li>
+            <li class="more-monsters hidden">Fuco : 2 apparitions</li>
+            <li class="more-monsters hidden">Grego : 2 apparitions</li>
+            <li class="more-monsters hidden">Rina : 2 apparitions</li>
+            <li class="more-monsters hidden">Iona : 2 apparitions</li>
+            <li class="more-monsters hidden">Adriana : 2 apparitions</li>
+            <li class="more-monsters hidden">Liam : 2 apparitions</li>
+            <li class="more-monsters hidden">Feng yan : 2 apparitions</li>
+            <li class="more-monsters hidden">Rosemary : 2 apparitions</li>
+            <li class="more-monsters hidden">Chamomile : 2 apparitions</li>
+            <li class="more-monsters hidden">Lavender : 2 apparitions</li>
+            <li class="more-monsters hidden">Astrid : 2 apparitions</li>
+            <li class="more-monsters hidden">Brita : 2 apparitions</li>
+            <li class="more-monsters hidden">Mihyang : 2 apparitions</li>
+            <li class="more-monsters hidden">Deborah : 2 apparitions</li>
+            <li class="more-monsters hidden">Audrey : 2 apparitions</li>
+            <li class="more-monsters hidden">Homunculus : 2 apparitions</li>
+            <li class="more-monsters hidden">Bella : 2 apparitions</li>
+            <li class="more-monsters hidden">Shihwa : 2 apparitions</li>
+            <li class="more-monsters hidden">Kamiya : 2 apparitions</li>
+            <li class="more-monsters hidden">Ganache : 2 apparitions</li>
+            <li class="more-monsters hidden">Pave : 2 apparitions</li>
+            <li class="more-monsters hidden">Giselle : 2 apparitions</li>
+            <li class="more-monsters hidden">Monte : 2 apparitions</li>
+            <li class="more-monsters hidden">John : 2 apparitions</li>
+            <li class="more-monsters hidden">Xiana : 2 apparitions</li>
+            <li class="more-monsters hidden">Federica : 2 apparitions</li>
+            <li class="more-monsters hidden">Kiara : 2 apparitions</li>
+            <li class="more-monsters hidden">Hector : 2 apparitions</li>
+            <li class="more-monsters hidden">Ian : 2 apparitions</li>
+            <li class="more-monsters hidden">Evan : 2 apparitions</li>
+            <li class="more-monsters hidden">Izaria : 2 apparitions</li>
+            <li class="more-monsters hidden">Aria : 2 apparitions</li>
+            <li class="more-monsters hidden">Malaka : 2 apparitions</li>
+            <li class="more-monsters hidden">Taurus : 2 apparitions</li>
+            <li class="more-monsters hidden">Dover : 2 apparitions</li>
+            <li class="more-monsters hidden">Hwa : 2 apparitions</li>
+            <li class="more-monsters hidden">Pang : 2 apparitions</li>
+            <li class="more-monsters hidden">Ran : 2 apparitions</li>
+            <li class="more-monsters hidden">Ongyouki : 2 apparitions</li>
+            <li class="more-monsters hidden">Daniel : 2 apparitions</li>
+            <li class="more-monsters hidden">Julie : 2 apparitions</li>
+            <li class="more-monsters hidden">Liu mei : 2 apparitions</li>
+            <li class="more-monsters hidden">Mookwol : 2 apparitions</li>
+            <li class="more-monsters hidden">Guillaume : 2 apparitions</li>
+            <li class="more-monsters hidden">Raviti : 2 apparitions</li>
+            <li class="more-monsters hidden">Ella : 2 apparitions</li>
+            <li class="more-monsters hidden">Shan : 2 apparitions</li>
+            <li class="more-monsters hidden">Juno : 2 apparitions</li>
+            <li class="more-monsters hidden">Aaliyah : 2 apparitions</li>
+            <li class="more-monsters hidden">Lariel : 2 apparitions</li>
+            <li class="more-monsters hidden">Mihael : 2 apparitions</li>
+            <li class="more-monsters hidden">Woosa : 2 apparitions</li>
+            <li class="more-monsters hidden">Nigong : 2 apparitions</li>
+            <li class="more-monsters hidden">Fedora : 2 apparitions</li>
+            <li class="more-monsters hidden">Dias : 2 apparitions</li>
+            <li class="more-monsters hidden">Mirinae : 2 apparitions</li>
+            <li class="more-monsters hidden">Hongyeon : 2 apparitions</li>
+            <li class="more-monsters hidden">Dongbaek : 2 apparitions</li>
+            <li class="more-monsters hidden">Yeonhwa : 2 apparitions</li>
+            <li class="more-monsters hidden">Songseol : 2 apparitions</li>
+            <li class="more-monsters hidden">Susano : 2 apparitions</li>
+            <li class="more-monsters hidden">Orochi : 2 apparitions</li>
+            <li class="more-monsters hidden">Gin : 2 apparitions</li>
+            <li class="more-monsters hidden">Threat : 2 apparitions</li>
+            <li class="more-monsters hidden">Perna : 2 apparitions</li>
+            <li class="more-monsters hidden">Tiana : 2 apparitions</li>
+            <li class="more-monsters hidden">Lydia : 2 apparitions</li>
+            <li class="more-monsters hidden">Harmonia : 2 apparitions</li>
+            <li class="more-monsters hidden">Triana : 2 apparitions</li>
+            <li class="more-monsters hidden">Lulu : 2 apparitions</li>
+            <li class="more-monsters hidden">Lala : 2 apparitions</li>
+            <li class="more-monsters hidden">Kaki : 2 apparitions</li>
+            <li class="more-monsters hidden">Karnal : 2 apparitions</li>
+            <li class="more-monsters hidden">Iunu : 2 apparitions</li>
+            <li class="more-monsters hidden">Sharron : 2 apparitions</li>
+            <li class="more-monsters hidden">Amanda : 2 apparitions</li>
+            <li class="more-monsters hidden">Ardella : 2 apparitions</li>
+            <li class="more-monsters hidden">Chris : 2 apparitions</li>
+            <li class="more-monsters hidden">Bethony : 2 apparitions</li>
+            <li class="more-monsters hidden">Fami : 2 apparitions</li>
+            <li class="more-monsters hidden">Chilling : 2 apparitions</li>
+            <li class="more-monsters hidden">Todd : 2 apparitions</li>
+            <li class="more-monsters hidden">Jarrett : 2 apparitions</li>
+            <li class="more-monsters hidden">Hekerson : 2 apparitions</li>
+            <li class="more-monsters hidden">Tatu : 2 apparitions</li>
+            <li class="more-monsters hidden">Cheongpung : 2 apparitions</li>
+            <li class="more-monsters hidden">Hanwul : 2 apparitions</li>
+            <li class="more-monsters hidden">Narsha : 2 apparitions</li>
+            <li class="more-monsters hidden">Halphas : 2 apparitions</li>
+            <li class="more-monsters hidden">Ahman : 2 apparitions</li>
+            <li class="more-monsters hidden">Rasheed : 2 apparitions</li>
+            <li class="more-monsters hidden">Han : 2 apparitions</li>
+            <li class="more-monsters hidden">Herne : 2 apparitions</li>
+            <li class="more-monsters hidden">Mellia : 2 apparitions</li>
+            <li class="more-monsters hidden">Mina : 2 apparitions</li>
+            <li class="more-monsters hidden">Mei : 2 apparitions</li>
+            <li class="more-monsters hidden">Naomi : 2 apparitions</li>
+            <li class="more-monsters hidden">Xiao ling : 2 apparitions</li>
+            <li class="more-monsters hidden">Acasis : 2 apparitions</li>
+            <li class="more-monsters hidden">Gangchun : 2 apparitions</li>
+            <li class="more-monsters hidden">Nangrim : 2 apparitions</li>
+            <li class="more-monsters hidden">Suri : 2 apparitions</li>
+            <li class="more-monsters hidden">Baekdu : 2 apparitions</li>
+            <li class="more-monsters hidden">Hanra : 2 apparitions</li>
+            <li class="more-monsters hidden">Shaina : 2 apparitions</li>
+            <li class="more-monsters hidden">Talia : 2 apparitions</li>
+            <li class="more-monsters hidden">Melissa : 2 apparitions</li>
+            <li class="more-monsters hidden">Deva : 2 apparitions</li>
+            <li class="more-monsters hidden">Yen : 2 apparitions</li>
+            <li class="more-monsters hidden">Lucien : 2 apparitions</li>
+            <li class="more-monsters hidden">Vivachel : 2 apparitions</li>
+            <li class="more-monsters hidden">Fran : 2 apparitions</li>
+            <li class="more-monsters hidden">Bering : 2 apparitions</li>
+            <li class="more-monsters hidden">Ganymede : 2 apparitions</li>
+            <li class="more-monsters hidden">Zibrolta : 2 apparitions</li>
+            <li class="more-monsters hidden">Pigma : 2 apparitions</li>
+            <li class="more-monsters hidden">Lumina : 1 apparitions</li>
+            <li class="more-monsters hidden">Nobella : 1 apparitions</li>
+            <li class="more-monsters hidden">Groa : 1 apparitions</li>
+            <li class="more-monsters hidden">Guy : 1 apparitions</li>
+            <li class="more-monsters hidden">Jack : 1 apparitions</li>
+            <li class="more-monsters hidden">Yuko : 1 apparitions</li>
+            <li class="more-monsters hidden">Solvark : 1 apparitions</li>
+            <li class="more-monsters hidden">Deragron : 1 apparitions</li>
+            <li class="more-monsters hidden">Ereshion : 1 apparitions</li>
+            <li class="more-monsters hidden">Fridrion : 1 apparitions</li>
+            <li class="more-monsters hidden">Drakar : 1 apparitions</li>
+            <li class="more-monsters hidden">Doburoku : 1 apparitions</li>
+            <li class="more-monsters hidden">Rick : 1 apparitions</li>
+            <li class="more-monsters hidden">Sean : 1 apparitions</li>
+            <li class="more-monsters hidden">Aya : 1 apparitions</li>
+            <li class="more-monsters hidden">Haruka : 1 apparitions</li>
+            <li class="more-monsters hidden">Mayasura : 1 apparitions</li>
+            <li class="more-monsters hidden">Varuna : 1 apparitions</li>
+            <li class="more-monsters hidden">Danu : 1 apparitions</li>
+            <li class="more-monsters hidden">Werner : 1 apparitions</li>
+            <li class="more-monsters hidden">Sigmund : 1 apparitions</li>
+            <li class="more-monsters hidden">Parjyana : 1 apparitions</li>
+            <li class="more-monsters hidden">570rm : 1 apparitions</li>
+            <li class="more-monsters hidden">K1d : 1 apparitions</li>
+            <li class="more-monsters hidden">51lv3r : 1 apparitions</li>
+            <li class="more-monsters hidden">Rigna : 1 apparitions</li>
+            <li class="more-monsters hidden">Hexarina : 1 apparitions</li>
+            <li class="more-monsters hidden">Miles : 1 apparitions</li>
+            <li class="more-monsters hidden">Hyanes : 1 apparitions</li>
+            <li class="more-monsters hidden">Robo-e65 : 1 apparitions</li>
+            <li class="more-monsters hidden">Frigate : 1 apparitions</li>
+            <li class="more-monsters hidden">Despair : 1 apparitions</li>
+            <li class="more-monsters hidden">Seal : 1 apparitions</li>
+            <li class="more-monsters hidden">Parjanya : 1 apparitions</li>
+            <li class="more-monsters hidden">Devaraja : 1 apparitions</li>
+            <li class="more-monsters hidden">Ramael and judiah : 1 apparitions</li>
+            <li class="more-monsters hidden">Luna : 1 apparitions</li>
+            <li class="more-monsters hidden">Emma : 1 apparitions</li>
+            <li class="more-monsters hidden">Lisa : 1 apparitions</li>
+            <li class="more-monsters hidden">Olivia : 1 apparitions</li>
+            <li class="more-monsters hidden">Miruel and graciah : 1 apparitions</li>
+            <li class="more-monsters hidden">Minji and sapsaree : 1 apparitions</li>
+            <li class="more-monsters hidden">Yeji and sapsaree : 1 apparitions</li>
+            <li class="more-monsters hidden">Yuna and sapsaree : 1 apparitions</li>
+            <li class="more-monsters hidden">Eunbee and sapsaree : 1 apparitions</li>
+            <li class="more-monsters hidden">Damee and sapsaree : 1 apparitions</li>
+            <li class="more-monsters hidden">Rite : 1 apparitions</li>
+            <li class="more-monsters hidden">Baleygr : 1 apparitions</li>
+            <li class="more-monsters hidden">Layla : 1 apparitions</li>
+            <li class="more-monsters hidden">Jessica : 1 apparitions</li>
+            <li class="more-monsters hidden">Jojo : 1 apparitions</li>
+            <li class="more-monsters hidden">Liebli : 1 apparitions</li>
+            <li class="more-monsters hidden">Destiny : 1 apparitions</li>
+            <li class="more-monsters hidden">Ramira : 1 apparitions</li>
+            <li class="more-monsters hidden">Lucasha : 1 apparitions</li>
+            <li class="more-monsters hidden">Prilea : 1 apparitions</li>
+            <li class="more-monsters hidden">Kabilla : 1 apparitions</li>
+            <li class="more-monsters hidden">Hellea : 1 apparitions</li>
+            <li class="more-monsters hidden">Berenice : 1 apparitions</li>
+            <li class="more-monsters hidden">Sieq : 1 apparitions</li>
+            <li class="more-monsters hidden">Kalantatze : 1 apparitions</li>
+            <li class="more-monsters hidden">Aurelia : 1 apparitions</li>
+            <li class="more-monsters hidden">Frederic : 1 apparitions</li>
+            <li class="more-monsters hidden">Sigrid : 1 apparitions</li>
+            <li class="more-monsters hidden">Elena : 1 apparitions</li>
+            <li class="more-monsters hidden">Fudge : 1 apparitions</li>
+            <li class="more-monsters hidden">Truffle : 1 apparitions</li>
+            <li class="more-monsters hidden">Hibiscus : 1 apparitions</li>
+            <li class="more-monsters hidden">Jasmine : 1 apparitions</li>
+            <li class="more-monsters hidden">Amduat : 1 apparitions</li>
+            <li class="more-monsters hidden">Qebehsenuef : 1 apparitions</li>
+            <li class="more-monsters hidden">Imesety : 1 apparitions</li>
+            <li class="more-monsters hidden">Sath : 1 apparitions</li>
+            <li class="more-monsters hidden">Racuni : 1 apparitions</li>
+            <li class="more-monsters hidden">Kroa : 1 apparitions</li>
+            <li class="more-monsters hidden">Carlos : 1 apparitions</li>
+            <li class="more-monsters hidden">Robo-g92 : 1 apparitions</li>
+            <li class="more-monsters hidden">Robo-f29 : 1 apparitions</li>
+            <li class="more-monsters hidden">Miriam : 1 apparitions</li>
+            <li class="more-monsters hidden">Susan : 1 apparitions</li>
+            <li class="more-monsters hidden">Celine : 1 apparitions</li>
+            <li class="more-monsters hidden">Madeleine : 1 apparitions</li>
+            <li class="more-monsters hidden">Xiao lin : 1 apparitions</li>
+            <li class="more-monsters hidden">Hong hua : 1 apparitions</li>
+            <li class="more-monsters hidden">Ling ling : 1 apparitions</li>
+            <li class="more-monsters hidden">Fei : 1 apparitions</li>
+            <li class="more-monsters hidden">Berserk : 1 apparitions</li>
+            <li class="more-monsters hidden">Nora : 1 apparitions</li>
+            <li class="more-monsters hidden">Riley : 1 apparitions</li>
+            <li class="more-monsters hidden">Fuuki : 1 apparitions</li>
+            <li class="more-monsters hidden">Suiki : 1 apparitions</li>
+            <li class="more-monsters hidden">Cayde : 1 apparitions</li>
+            <li class="more-monsters hidden">Vigor : 1 apparitions</li>
+            <li class="more-monsters hidden">Leah : 1 apparitions</li>
+            <li class="more-monsters hidden">Craig : 1 apparitions</li>
+            <li class="more-monsters hidden">Gruda : 1 apparitions</li>
+            <li class="more-monsters hidden">Kungen : 1 apparitions</li>
+            <li class="more-monsters hidden">Khmun : 1 apparitions</li>
+            <li class="more-monsters hidden">Amarna : 1 apparitions</li>
+            <li class="more-monsters hidden">Geldnir : 1 apparitions</li>
+            <li class="more-monsters hidden">Barque : 1 apparitions</li>
+            <li class="more-monsters hidden">Brig : 1 apparitions</li>
+            <li class="more-monsters hidden">Sian : 1 apparitions</li>
+            <li class="more-monsters hidden">Elucia : 1 apparitions</li>
+            <li class="more-monsters hidden">Iselia : 1 apparitions</li>
+            <li class="more-monsters hidden">Aeilene : 1 apparitions</li>
+            <li class="more-monsters hidden">Neal : 1 apparitions</li>
+            <li class="more-monsters hidden">Sorin : 1 apparitions</li>
+            <li class="more-monsters hidden">Belladeon : 1 apparitions</li>
+            <li class="more-monsters hidden">Kro : 1 apparitions</li>
+            <li class="more-monsters hidden">Ramahan : 1 apparitions</li>
+            <li class="more-monsters hidden">Raoq : 1 apparitions</li>
+            <li class="more-monsters hidden">Icaru : 1 apparitions</li>
+            <li class="more-monsters hidden">Dusky : 1 apparitions</li>
+            <li class="more-monsters hidden">Gildong : 1 apparitions</li>
+            <li class="more-monsters hidden">Gunpyeong : 1 apparitions</li>
+            <li class="more-monsters hidden">Woochi : 1 apparitions</li>
+            <li class="more-monsters hidden">Woonhak : 1 apparitions</li>
+            <li class="more-monsters hidden">Dagora : 1 apparitions</li>
+            <li class="more-monsters hidden">Ursha : 1 apparitions</li>
+            <li class="more-monsters hidden">Lusha : 1 apparitions</li>
+            <li class="more-monsters hidden">Cheryl : 1 apparitions</li>
+            <li class="more-monsters hidden">Leo : 1 apparitions</li>
+            <li class="more-monsters hidden">Icares : 1 apparitions</li>
+            <li class="more-monsters hidden">Felleria : 1 apparitions</li>
+            <li class="more-monsters hidden">Bastet : 1 apparitions</li>
+            <li class="more-monsters hidden">Yeonhong : 1 apparitions</li>
+            <li class="more-monsters hidden">Verdehile : 1 apparitions</li>
+            <li class="more-monsters hidden">Yaku : 1 apparitions</li>
+            <li class="more-monsters hidden">Fairo : 1 apparitions</li>
+            <li class="more-monsters hidden">Shaffron : 1 apparitions</li>
+            <li class="more-monsters hidden">Loque : 1 apparitions</li>
+            <li class="more-monsters hidden">Megan : 1 apparitions</li>
+            <li class="more-monsters hidden">Silia : 1 apparitions</li>
+            <li class="more-monsters hidden">Linda : 1 apparitions</li>
+            <li class="more-monsters hidden">Gina : 1 apparitions</li>
+            <li class="more-monsters hidden">Chichi : 1 apparitions</li>
+            <li class="more-monsters hidden">Shushu : 1 apparitions</li>
+            <li class="more-monsters hidden">Janssen : 1 apparitions</li>
+            <li class="more-monsters hidden">Mao : 1 apparitions</li>
+            <li class="more-monsters hidden">Xiao chun : 1 apparitions</li>
+            <li class="more-monsters hidden">Huan : 1 apparitions</li>
+            <li class="more-monsters hidden">Tien qin : 1 apparitions</li>
+            <li class="more-monsters hidden">Wei shin : 1 apparitions</li>
+            <li class="more-monsters hidden">Bulldozer : 1 apparitions</li>
+            <li class="more-monsters hidden">Tractor : 1 apparitions</li>
+            <li class="more-monsters hidden">Crane : 1 apparitions</li>
+            <li class="more-monsters hidden">Driller : 1 apparitions</li>
+            <li class="more-monsters hidden">Crawler : 1 apparitions</li>
+            <li class="more-monsters hidden">Sabrina : 1 apparitions</li>
+            <li class="more-monsters hidden">Maruna : 1 apparitions</li>
+            <li class="more-monsters hidden">Zenobia : 1 apparitions</li>
+            <li class="more-monsters hidden">Bailey : 1 apparitions</li>
+            <li class="more-monsters hidden">Martina : 1 apparitions</li>
+            <li class="more-monsters hidden">Nubia : 1 apparitions</li>
+            <li class="more-monsters hidden">Sonora : 1 apparitions</li>
+            <li class="more-monsters hidden">Namib : 1 apparitions</li>
+            <li class="more-monsters hidden">Sahara : 1 apparitions</li>
+            <li class="more-monsters hidden">Karakum : 1 apparitions</li>
+            <li class="more-monsters hidden">Dova : 1 apparitions</li>
+            <li class="more-monsters hidden">Urtau : 1 apparitions</li>
+            <li class="more-monsters hidden">Burentau : 1 apparitions</li>
+            <li class="more-monsters hidden">Eintau : 1 apparitions</li>
+            <li class="more-monsters hidden">Grotau : 1 apparitions</li>
+            <li class="more-monsters hidden">Tablo : 1 apparitions</li>
+            <li class="more-monsters hidden">Diana : 1 apparitions</li>
+            <li class="more-monsters hidden">Garo : 1 apparitions</li>
+            <li class="more-monsters hidden">Priz : 1 apparitions</li>
+            <li class="more-monsters hidden">Allen : 1 apparitions</li>
+            <li class="more-monsters hidden">Kai'en : 1 apparitions</li>
+            <li class="more-monsters hidden">Roid : 1 apparitions</li>
+            <li class="more-monsters hidden">Darion : 1 apparitions</li>
+            <li class="more-monsters hidden">Jubelle : 1 apparitions</li>
+          </ul>
+          <button id="more-monster-button">More</button>
+        </div>
       </div>
     </div>
   </div>
-  <div class="detail-view" id="detail-view" style="display: none;">
-    <h2 id="detail-caption"></h2>
-    <div class="detail-buttons">
-      <button id="back-button">Back</button>
-      <button id="toggle-negative-button">Show white picture</button>
+  <div id="list-container" style="display: none;">
+    <div class="container">
+      <h2>Monsters List</h2>
+      <ul>
+        <li>51lv3r</li>
+        <li>570rm</li>
+        <li>Aaliyah</li>
+        <li>Abellio</li>
+        <li>Abigail</li>
+        <li>Acasis</li>
+        <li>Adrian</li>
+        <li>Adriana</li>
+        <li>Aegir</li>
+        <li>Aeilene</li>
+        <li>Ahman</li>
+        <li>Ahmed</li>
+        <li>Akhamamir</li>
+        <li>Akia</li>
+        <li>Akroma</li>
+        <li>Alexandra</li>
+        <li>Alice</li>
+        <li>Alicia</li>
+        <li>Allen</li>
+        <li>Amanda</li>
+        <li>Amarna</li>
+        <li>Amber</li>
+        <li>Amduat</li>
+        <li>Amelia</li>
+        <li>Anavel</li>
+        <li>Angela</li>
+        <li>Anne</li>
+        <li>Antares</li>
+        <li>Aquila</li>
+        <li>Arang</li>
+        <li>Arcana</li>
+        <li>Ardella</li>
+        <li>Argen</li>
+        <li>Aria</li>
+        <li>Ariana</li>
+        <li>Ariel</li>
+        <li>Arnold</li>
+        <li>Artamiel</li>
+        <li>Aschubel</li>
+        <li>Ashour</li>
+        <li>Asima</li>
+        <li>Astar</li>
+        <li>Astrid</li>
+        <li>Atenai</li>
+        <li>Audrey</li>
+        <li>Aurelia</li>
+        <li>Aya</li>
+        <li>Baekdu</li>
+        <li>Bael</li>
+        <li>Bailey</li>
+        <li>Baleygr</li>
+        <li>Barbara</li>
+        <li>Baretta</li>
+        <li>Barque</li>
+        <li>Bastet</li>
+        <li>Belial</li>
+        <li>Belita</li>
+        <li>Bella</li>
+        <li>Belladeon</li>
+        <li>Bellenus</li>
+        <li>Benedict</li>
+        <li>Berenice</li>
+        <li>Berghild</li>
+        <li>Bering</li>
+        <li>Bernadotte</li>
+        <li>Berserk</li>
+        <li>Beth</li>
+        <li>Bethony</li>
+        <li>Betta</li>
+        <li>Birgitta</li>
+        <li>Birman</li>
+        <li>Bloodya</li>
+        <li>Bombay</li>
+        <li>Borgnine</li>
+        <li>Brandia</li>
+        <li>Briand</li>
+        <li>Brig</li>
+        <li>Brita</li>
+        <li>Bulldozer</li>
+        <li>Burentau</li>
+        <li>Byungchul</li>
+        <li>Cadiz</li>
+        <li>Camaryn</li>
+        <li>Camilla</li>
+        <li>Carbine</li>
+        <li>Carcano</li>
+        <li>Carlos</li>
+        <li>Carrack</li>
+        <li>Cassie</li>
+        <li>Cayde</li>
+        <li>Celestara</li>
+        <li>Celia</li>
+        <li>Celine</li>
+        <li>Chacha</li>
+        <li>Chakra</li>
+        <li>Chamie</li>
+        <li>Chamomile</li>
+        <li>Chandra</li>
+        <li>Charlotte</li>
+        <li>Chasun</li>
+        <li>Cheongpung</li>
+        <li>Cheryl</li>
+        <li>Chichi</li>
+        <li>Chilling</li>
+        <li>Chiwu</li>
+        <li>Chloe</li>
+        <li>Chow</li>
+        <li>Chris</li>
+        <li>Christina</li>
+        <li>Cichlid</li>
+        <li>Claire</li>
+        <li>Clara</li>
+        <li>Coco</li>
+        <li>Conrad</li>
+        <li>Cordelia</li>
+        <li>Covenant</li>
+        <li>Craig</li>
+        <li>Craka</li>
+        <li>Crane</li>
+        <li>Crawler</li>
+        <li>Dagora</li>
+        <li>Damee and sapsaree</li>
+        <li>Daniel</li>
+        <li>Danu</li>
+        <li>Daphnis</li>
+        <li>Darion</li>
+        <li>Deborah</li>
+        <li>Delphoi</li>
+        <li>Deragron</li>
+        <li>Despair</li>
+        <li>Destiny</li>
+        <li>Deva</li>
+        <li>Devaraja</li>
+        <li>Diana</li>
+        <li>Dias</li>
+        <li>Doburoku</li>
+        <li>Dominic</li>
+        <li>Dongbaek</li>
+        <li>Dorothy</li>
+        <li>Douglas</li>
+        <li>Douman</li>
+        <li>Dova</li>
+        <li>Dover</li>
+        <li>Draco</li>
+        <li>Dragunov</li>
+        <li>Drakar</li>
+        <li>Driller</li>
+        <li>Duamutef</li>
+        <li>Dusky</li>
+        <li>Dyeus</li>
+        <li>Eintau</li>
+        <li>Eirgar</li>
+        <li>Eladriel</li>
+        <li>Eleanor</li>
+        <li>Elena</li>
+        <li>Eleni</li>
+        <li>Elenoa</li>
+        <li>Ella</li>
+        <li>Elsharion</li>
+        <li>Elucia</li>
+        <li>Eludia</li>
+        <li>Eluin</li>
+        <li>Emily</li>
+        <li>Emma</li>
+        <li>Enshia</li>
+        <li>Eredas</li>
+        <li>Ereshion</li>
+        <li>Erwin</li>
+        <li>Ethna</li>
+        <li>Euldong</li>
+        <li>Eunbee and sapsaree</li>
+        <li>Eva</li>
+        <li>Evan</li>
+        <li>Fairo</li>
+        <li>Fami</li>
+        <li>Federica</li>
+        <li>Fedora</li>
+        <li>Fei</li>
+        <li>Felleria</li>
+        <li>Feng yan</li>
+        <li>Fermion</li>
+        <li>Figaro</li>
+        <li>Fran</li>
+        <li>Frederic</li>
+        <li>Fria</li>
+        <li>Fridrion</li>
+        <li>Frigate</li>
+        <li>Fuco</li>
+        <li>Fudge</li>
+        <li>Fuuki</li>
+        <li>Ganache</li>
+        <li>Gangchun</li>
+        <li>Ganymede</li>
+        <li>Gapsoo</li>
+        <li>Garo</li>
+        <li>Geldnir</li>
+        <li>Gemini</li>
+        <li>Giana</li>
+        <li>Gildong</li>
+        <li>Gin</li>
+        <li>Gina</li>
+        <li>Giou</li>
+        <li>Giselle</li>
+        <li>Grego</li>
+        <li>Groa</li>
+        <li>Grogen</li>
+        <li>Grotau</li>
+        <li>Gruda</li>
+        <li>Guillaume</li>
+        <li>Gunpyeong</li>
+        <li>Gurkha</li>
+        <li>Guy</li>
+        <li>Haegang</li>
+        <li>Halphas</li>
+        <li>Han</li>
+        <li>Hannah</li>
+        <li>Hanra</li>
+        <li>Hanwul</li>
+        <li>Harmonia</li>
+        <li>Hartmann</li>
+        <li>Haruka</li>
+        <li>Hathor</li>
+        <li>Hector</li>
+        <li>Hekerson</li>
+        <li>Helena</li>
+        <li>Hellea</li>
+        <li>Henrik</li>
+        <li>Herne</li>
+        <li>Herteit</li>
+        <li>Hexarina</li>
+        <li>Hibiscus</li>
+        <li>Hilda</li>
+        <li>Homunculus</li>
+        <li>Hong hua</li>
+        <li>Hongyeon</li>
+        <li>Hraesvelg</li>
+        <li>Hrungnir</li>
+        <li>Huan</li>
+        <li>Hwa</li>
+        <li>Hwahee</li>
+        <li>Hyanes</li>
+        <li>Ian</li>
+        <li>Icares</li>
+        <li>Icaru</li>
+        <li>Icasha</li>
+        <li>Imesety</li>
+        <li>Iona</li>
+        <li>Irene</li>
+        <li>Iris</li>
+        <li>Isabelle</li>
+        <li>Isael</li>
+        <li>Iselia</li>
+        <li>Isillen</li>
+        <li>Isis</li>
+        <li>Iunu</li>
+        <li>Izaria</li>
+        <li>Jaara</li>
+        <li>Jack</li>
+        <li>Jackson</li>
+        <li>Jade</li>
+        <li>Jaduel and aepiah</li>
+        <li>Jager</li>
+        <li>Jamire</li>
+        <li>Janssen</li>
+        <li>Jarrett</li>
+        <li>Jasmine</li>
+        <li>Jean</li>
+        <li>Jeanne</li>
+        <li>Jeogun</li>
+        <li>Jeongnam</li>
+        <li>Jessica</li>
+        <li>Johanna</li>
+        <li>John</li>
+        <li>Jojo</li>
+        <li>Josephine</li>
+        <li>Jubelle</li>
+        <li>Julianne</li>
+        <li>Julie</li>
+        <li>Julien</li>
+        <li>Jun</li>
+        <li>Juno</li>
+        <li>Jurgen</li>
+        <li>K1d</li>
+        <li>Kabilla</li>
+        <li>Kacey</li>
+        <li>Kai'en</li>
+        <li>Kaito</li>
+        <li>Kaki</li>
+        <li>Kalantatze</li>
+        <li>Kamiya</li>
+        <li>Karakum</li>
+        <li>Karl</li>
+        <li>Karnal</li>
+        <li>Karuel and lanoah</li>
+        <li>Kashmir</li>
+        <li>Katarina</li>
+        <li>Kaz</li>
+        <li>Khmun</li>
+        <li>Kiara</li>
+        <li>Kiki</li>
+        <li>Kinki</li>
+        <li>Korona</li>
+        <li>Kovarci</li>
+        <li>Kro</li>
+        <li>Kroa</li>
+        <li>Kumar</li>
+        <li>Kungen</li>
+        <li>Kunite</li>
+        <li>Kyle</li>
+        <li>Lagmaron</li>
+        <li>Laika</li>
+        <li>Laima</li>
+        <li>Lala</li>
+        <li>Lanett</li>
+        <li>Lapis</li>
+        <li>Lariel</li>
+        <li>Lars</li>
+        <li>Lavender</li>
+        <li>Layla</li>
+        <li>Leah</li>
+        <li>Leo</li>
+        <li>Leona</li>
+        <li>Lexy</li>
+        <li>Liam</li>
+        <li>Liebli</li>
+        <li>Liesel</li>
+        <li>Liliana</li>
+        <li>Linda</li>
+        <li>Ling ling</li>
+        <li>Lionel</li>
+        <li>Lisa</li>
+        <li>Liu mei</li>
+        <li>Logan</li>
+        <li>Loque</li>
+        <li>Lora</li>
+        <li>Loren</li>
+        <li>Louis</li>
+        <li>Louise</li>
+        <li>Lucas</li>
+        <li>Lucasha</li>
+        <li>Lucia</li>
+        <li>Lucien</li>
+        <li>Ludo</li>
+        <li>Luer</li>
+        <li>Lulu</li>
+        <li>Lumina</li>
+        <li>Lumirecia</li>
+        <li>Luna</li>
+        <li>Lupinus</li>
+        <li>Lusha</li>
+        <li>Lydia</li>
+        <li>Madeleine</li>
+        <li>Magnum</li>
+        <li>Magnus</li>
+        <li>Malaka</li>
+        <li>Malite</li>
+        <li>Manannan</li>
+        <li>Manon</li>
+        <li>Manx</li>
+        <li>Mao</li>
+        <li>Mark</li>
+        <li>Martina</li>
+        <li>Maruna</li>
+        <li>Masha</li>
+        <li>Maya</li>
+        <li>Mayasura</li>
+        <li>Megan</li>
+        <li>Mei</li>
+        <li>Mei hou wang</li>
+        <li>Melissa</li>
+        <li>Mellia</li>
+        <li>Mi ying</li>
+        <li>Michelle</li>
+        <li>Mihael</li>
+        <li>Miho</li>
+        <li>Mihyang</li>
+        <li>Mikene</li>
+        <li>Miles</li>
+        <li>Mimiir</li>
+        <li>Mina</li>
+        <li>Minato</li>
+        <li>Minji and sapsaree</li>
+        <li>Miriam</li>
+        <li>Mirinae</li>
+        <li>Miruel and graciah</li>
+        <li>Misty</li>
+        <li>Mizuki</li>
+        <li>Mo long</li>
+        <li>Molly</li>
+        <li>Momo</li>
+        <li>Monte</li>
+        <li>Moogwang</li>
+        <li>Mookwol</li>
+        <li>Moore</li>
+        <li>Morris</li>
+        <li>Namib</li>
+        <li>Nana</li>
+        <li>Nangrim</li>
+        <li>Naomi</li>
+        <li>Narsha</li>
+        <li>Natalie</li>
+        <li>Neal</li>
+        <li>Nebelung</li>
+        <li>Nephthys</li>
+        <li>Nicki</li>
+        <li>Nigong</li>
+        <li>Nisha</li>
+        <li>Nobella</li>
+        <li>Nora</li>
+        <li>Nubia</li>
+        <li>Nyx</li>
+        <li>Oberon</li>
+        <li>Odin</li>
+        <li>Okeanos</li>
+        <li>Oliver</li>
+        <li>Olivia</li>
+        <li>Omar</li>
+        <li>Ongyouki</li>
+        <li>Onyx</li>
+        <li>Ophilia</li>
+        <li>Orion</li>
+        <li>Orochi</li>
+        <li>Pang</li>
+        <li>Parjanya</li>
+        <li>Parjyana</li>
+        <li>Pater</li>
+        <li>Patrick</li>
+        <li>Pave</li>
+        <li>Perna</li>
+        <li>Phenaka</li>
+        <li>Pigma</li>
+        <li>Platy</li>
+        <li>Pontos</li>
+        <li>Poseidon</li>
+        <li>Praha</li>
+        <li>Pralin</li>
+        <li>Prilea</li>
+        <li>Priz</li>
+        <li>Psamathe</li>
+        <li>Pungbaek</li>
+        <li>Qebehsenuef</li>
+        <li>Qitian dasheng</li>
+        <li>Racuni</li>
+        <li>Ragdoll</li>
+        <li>Rahul</li>
+        <li>Rakan</li>
+        <li>Raki</li>
+        <li>Ramael and judiah</li>
+        <li>Ramahan</li>
+        <li>Ramira</li>
+        <li>Ran</li>
+        <li>Raoq</li>
+        <li>Rasheed</li>
+        <li>Raviti</li>
+        <li>Rebecca</li>
+        <li>Ren</li>
+        <li>Reno</li>
+        <li>Rica</li>
+        <li>Rick</li>
+        <li>Rigel</li>
+        <li>Rigna</li>
+        <li>Riley</li>
+        <li>Rina</li>
+        <li>Rite</li>
+        <li>Ritesh</li>
+        <li>Ritsu</li>
+        <li>Robo-e65</li>
+        <li>Robo-f29</li>
+        <li>Robo-g92</li>
+        <li>Robo-p27</li>
+        <li>Robo-r40</li>
+        <li>Roid</li>
+        <li>Rosemary</li>
+        <li>Ryan</li>
+        <li>Sabrina</li>
+        <li>Sadiel and zeryah</li>
+        <li>Sagar</li>
+        <li>Sahara</li>
+        <li>Salah</li>
+        <li>Sath</li>
+        <li>Savannah</li>
+        <li>Scarlett</li>
+        <li>Seal</li>
+        <li>Sean</li>
+        <li>Seara</li>
+        <li>Seimei</li>
+        <li>Sekhmet</li>
+        <li>Selena</li>
+        <li>Sera</li>
+        <li>Shaffron</li>
+        <li>Shahat</li>
+        <li>Shaina</li>
+        <li>Shan</li>
+        <li>Shannon</li>
+        <li>Sharron</li>
+        <li>Shazam</li>
+        <li>Shi hou</li>
+        <li>Shihwa</li>
+        <li>Shimitae</li>
+        <li>Shizuka</li>
+        <li>Shun</li>
+        <li>Shushu</li>
+        <li>Siamese</li>
+        <li>Sian</li>
+        <li>Sieq</li>
+        <li>Sige</li>
+        <li>Sigmarus</li>
+        <li>Sigmund</li>
+        <li>Sigrid</li>
+        <li>Silia</li>
+        <li>Smicer</li>
+        <li>Smokey</li>
+        <li>Soha</li>
+        <li>Solvark</li>
+        <li>Solveig</li>
+        <li>Son zhang lao</li>
+        <li>Songseol</li>
+        <li>Sonia</li>
+        <li>Sonnet</li>
+        <li>Sonora</li>
+        <li>Sophia</li>
+        <li>Sorin</li>
+        <li>Stella</li>
+        <li>Su</li>
+        <li>Suiki</li>
+        <li>Suri</li>
+        <li>Surtr</li>
+        <li>Susan</li>
+        <li>Susano</li>
+        <li>Tablo</li>
+        <li>Talia</li>
+        <li>Talisman</li>
+        <li>Tanya</li>
+        <li>Tanzaite</li>
+        <li>Taor</li>
+        <li>Taranys</li>
+        <li>Tarnisha</li>
+        <li>Tatu</li>
+        <li>Taurus</li>
+        <li>Tesarion</li>
+        <li>Teshar</li>
+        <li>Tetra</li>
+        <li>Tetsuya</li>
+        <li>Thebae</li>
+        <li>Theomars</li>
+        <li>Thomas</li>
+        <li>Threat</li>
+        <li>Tian lang</li>
+        <li>Tiana</li>
+        <li>Tien qin</li>
+        <li>Tilasha</li>
+        <li>Tirsa</li>
+        <li>Todd</li>
+        <li>Tomoe</li>
+        <li>Tosi</li>
+        <li>Tractor</li>
+        <li>Trasar</li>
+        <li>Trevor</li>
+        <li>Triana</li>
+        <li>Trinity</li>
+        <li>Triton</li>
+        <li>Truffle</li>
+        <li>Tyron</li>
+        <li>Ursha</li>
+        <li>Urtau</li>
+        <li>Usha</li>
+        <li>Valantis</li>
+        <li>Valdemar</li>
+        <li>Vancliffe</li>
+        <li>Vanessa</li>
+        <li>Varuna</li>
+        <li>Velajuel</li>
+        <li>Vendhan</li>
+        <li>Verad</li>
+        <li>Verdehile</li>
+        <li>Vereesa</li>
+        <li>Veromos</li>
+        <li>Veronica</li>
+        <li>Vigor</li>
+        <li>Vincent</li>
+        <li>Vivachel</li>
+        <li>Vritra</li>
+        <li>Wedjat</li>
+        <li>Wei shin</li>
+        <li>Werner</li>
+        <li>Windy</li>
+        <li>Wolyung</li>
+        <li>Woochi</li>
+        <li>Woonhak</li>
+        <li>Woonsa</li>
+        <li>Woosa</li>
+        <li>Xiana</li>
+        <li>Xiao chun</li>
+        <li>Xiao lin</li>
+        <li>Xiao ling</li>
+        <li>Xing zhe</li>
+        <li>Xiong fei</li>
+        <li>Yaku</li>
+        <li>Yeji and sapsaree</li>
+        <li>Yen</li>
+        <li>Yeonhong</li>
+        <li>Yeonhwa</li>
+        <li>Yuko</li>
+        <li>Yuna and sapsaree</li>
+        <li>Zaiross</li>
+        <li>Zen</li>
+        <li>Zenisek</li>
+        <li>Zenobia</li>
+        <li>Zerath</li>
+        <li>Zeratu</li>
+        <li>Zibala</li>
+        <li>Zibrolta</li>
+        <li>Zima</li>
+      </ul>
     </div>
-    <img id="detail-img" src="" alt="Balance Patch en grand">
   </div>
   <footer>
     <p>By B4tiste</p>
   </footer>
   <script src="script.js"></script>
+  <script>
+    // Gestion des onglets
+    const galleryTab = document.getElementById("gallery-tab");
+    const statsTab = document.getElementById("stats-tab");
+    const listTab = document.getElementById("list-tab");
+    const galleryContainer = document.getElementById("gallery-container");
+    const statsContainer = document.getElementById("stats-container");
+    const listContainer = document.getElementById("list-container");
+    
+    galleryTab.addEventListener("click", function() {
+      galleryContainer.style.display = "block";
+      statsContainer.style.display = "none";
+      listContainer.style.display = "none";
+      galleryTab.classList.add("active");
+      statsTab.classList.remove("active");
+      listTab.classList.remove("active");
+    });
+    
+    statsTab.addEventListener("click", function() {
+      galleryContainer.style.display = "none";
+      statsContainer.style.display = "block";
+      listContainer.style.display = "none";
+      statsTab.classList.add("active");
+      galleryTab.classList.remove("active");
+      listTab.classList.remove("active");
+    });
+    
+    listTab.addEventListener("click", function() {
+      galleryContainer.style.display = "none";
+      statsContainer.style.display = "none";
+      listContainer.style.display = "block";
+      listTab.classList.add("active");
+      galleryTab.classList.remove("active");
+      statsTab.classList.remove("active");
+    });
+
+    // Bouton More pour BP stats
+    document.getElementById("more-bp-button").addEventListener("click", function() {
+      var hiddenItems = document.querySelectorAll(".more-bp");
+      hiddenItems.forEach(item => {
+        if (item.style.display === "list-item") {
+          item.style.display = "none";
+          this.textContent = "More";
+        } else {
+          item.style.display = "list-item";
+          this.textContent = "Less";
+        }
+      });
+    });
+
+    // Bouton More pour Monster stats
+    document.getElementById("more-monster-button").addEventListener("click", function() {
+      var hiddenItems = document.querySelectorAll(".more-monsters");
+      hiddenItems.forEach(item => {
+        if (item.style.display === "list-item") {
+          item.style.display = "none";
+          this.textContent = "More";
+        } else {
+          item.style.display = "list-item";
+          this.textContent = "Less";
+        }
+      });
+    });
+  </script>
 </body>
 </html>
