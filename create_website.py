@@ -112,9 +112,9 @@ html_content += '          <h2>Balance Patch Stats</h2>\n'
 html_content += '          <ul id="bp-stats-list">\n'
 for i, (bp, count) in enumerate(bp_stats):
     if i < 10:
-        html_content += f'            <li>{bp} : {count} monstres</li>\n'
+        html_content += f'            <li>{bp} : {count} monsters</li>\n'
     else:
-        html_content += f'            <li class="more-bp hidden">{bp} : {count} monstres</li>\n'
+        html_content += f'            <li class="more-bp hidden">{bp} : {count} monsters</li>\n'
 html_content += '          </ul>\n'
 html_content += '          <button id="more-bp-button">More</button>\n'
 html_content += '        </div>\n'
@@ -125,9 +125,9 @@ html_content += '          <ul id="monster-stats-list">\n'
 for i, (monster, dates) in enumerate(monster_stats):
     count = len(dates)
     if i < 15:
-        html_content += f'            <li>{monster} : {count} apparitions</li>\n'
+        html_content += f'            <li>{monster} : {count} BPs</li>\n'
     else:
-        html_content += f'            <li class="more-monsters hidden">{monster} : {count} apparitions</li>\n'
+        html_content += f'            <li class="more-monsters hidden">{monster} : {count} BPs</li>\n'
 html_content += '          </ul>\n'
 html_content += '          <button id="more-monster-button">More</button>\n'
 html_content += '        </div>\n'
