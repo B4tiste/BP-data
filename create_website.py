@@ -43,6 +43,14 @@ sorted_images = sorted(image_files, key=extract_date, reverse=True)
 
 # Création du contenu HTML
 html_content = '<!DOCTYPE html>\n<html lang="fr">\n<head>\n'
+# Insertion du code Google Tag Manager dans le <head>
+html_content += '  <!-- Google Tag Manager -->\n'
+html_content += '  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({\'gtm.start\':\n'
+html_content += '  new Date().getTime(),event:\'gtm.js\'});var f=d.getElementsByTagName(s)[0],\n'
+html_content += '  j=d.createElement(s),dl=l!=\'dataLayer\'?\'&l=\'+l:\'\';j.async=true;j.src=\n'
+html_content += '  \'https://www.googletagmanager.com/gtm.js?id=\'+i+dl;f.parentNode.insertBefore(j,f);\n'
+html_content += '  })(window,document,\'script\',\'dataLayer\',\'GTM-WNZ8DLWF\');</script>\n'
+html_content += '  <!-- End Google Tag Manager -->\n'
 html_content += '  <meta charset="UTF-8">\n'
 html_content += '  <title>BP Gallery</title>\n'
 html_content += '  <link rel="stylesheet" type="text/css" href="style.css">\n'
@@ -55,7 +63,13 @@ html_content += '    .stats-columns { display: flex; justify-content: space-betw
 html_content += '    .stats-column { flex: 1; margin: 10px; min-width: 300px; }\n'
 html_content += '    .hidden { display: none; }\n'
 html_content += '  </style>\n'
-html_content += '</head>\n<body>\n'
+html_content += '</head>\n'
+# Insertion du code Google Tag Manager (noscript) juste après l'ouverture du <body>
+html_content += '<body>\n'
+html_content += '  <!-- Google Tag Manager (noscript) -->\n'
+html_content += '  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WNZ8DLWF"\n'
+html_content += '  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>\n'
+html_content += '  <!-- End Google Tag Manager (noscript) -->\n'
 
 # Navigation avec 4 onglets
 html_content += '  <div class="tab-container">\n'
