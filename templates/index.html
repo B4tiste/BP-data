@@ -65,7 +65,7 @@
 
 <body>
     <div class="container">
-        <h1>Ajouter un Monstre</h1>
+        <h1>Data adder</h1>
 
         <!-- Section pour définir la date globale -->
         <label for="global_date">Date actuelle :</label>
@@ -73,7 +73,7 @@
         <p>Cette date sera utilisée pour chaque ajout jusqu’à ce que vous la modifiiez.</p>
 
         <!-- Saisie du nom du monstre avec suggestions -->
-        <input list="monster_list" id="monster_input" placeholder="Nom du monstre">
+        <input list="monster_list" id="monster_input" placeholder="Nom...">
         <datalist id="monster_list">
             {% for name in monster_names %}
             <option value="{{ name }}">
@@ -92,7 +92,7 @@
             let date = document.getElementById("global_date").value;
 
             if (!monsterName || !date) {
-                document.getElementById("message_area").textContent = "Veuillez saisir un nom de monstre et définir la date.";
+                document.getElementById("message_area").textContent = "Veuillez saisir un nom et définir la date.";
                 return;
             }
 
