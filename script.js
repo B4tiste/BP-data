@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         .filter(card => card.style.display !== "none").length;
                     searchResultsElement.textContent = `Search : ${searchInput.value} (${visibleCards} result${visibleCards > 1 ? "s" : ""})`;
                 } else {
-                    alert("Monstre non trouvé !");
+                    alert("Did not find any results for " + searchInput.value);
                     searchResultsElement.textContent = "";
                 }
             }
