@@ -1,37 +1,62 @@
-document.addEventListener("DOMContentLoaded", function() {
-    // Gestion des onglets
+document.addEventListener("DOMContentLoaded", function () {
+    // Get tab elements
     const galleryTab = document.getElementById("gallery-tab");
     const statsTab = document.getElementById("stats-tab");
     const listTab = document.getElementById("list-tab");
+    const aboutTab = document.getElementById("about-tab");
+
+    // Get container elements
     const galleryContainer = document.getElementById("gallery-container");
     const statsContainer = document.getElementById("stats-container");
     const listContainer = document.getElementById("list-container");
+    const aboutContainer = document.getElementById("about-container");
 
-    galleryTab.addEventListener("click", function() {
+    // Onglet Gallery
+    galleryTab.addEventListener("click", function () {
         galleryContainer.style.display = "block";
         statsContainer.style.display = "none";
         listContainer.style.display = "none";
+        aboutContainer.style.display = "none";
         galleryTab.classList.add("active");
         statsTab.classList.remove("active");
         listTab.classList.remove("active");
+        aboutTab.classList.remove("active");
     });
 
-    statsTab.addEventListener("click", function() {
+    // Onglet Stats
+    statsTab.addEventListener("click", function () {
         galleryContainer.style.display = "none";
         statsContainer.style.display = "block";
         listContainer.style.display = "none";
+        aboutContainer.style.display = "none";
         statsTab.classList.add("active");
         galleryTab.classList.remove("active");
         listTab.classList.remove("active");
+        aboutTab.classList.remove("active");
     });
 
-    listTab.addEventListener("click", function() {
+    // Onglet List
+    listTab.addEventListener("click", function () {
         galleryContainer.style.display = "none";
         statsContainer.style.display = "none";
         listContainer.style.display = "block";
+        aboutContainer.style.display = "none";
         listTab.classList.add("active");
         galleryTab.classList.remove("active");
         statsTab.classList.remove("active");
+        aboutTab.classList.remove("active");
+    });
+
+    // Nouvel onglet About Me
+    aboutTab.addEventListener("click", function () {
+        galleryContainer.style.display = "none";
+        statsContainer.style.display = "none";
+        listContainer.style.display = "none";
+        aboutContainer.style.display = "block";
+        aboutTab.classList.add("active");
+        galleryTab.classList.remove("active");
+        statsTab.classList.remove("active");
+        listTab.classList.remove("active");
     });
 
     // Gestion des cards et de la vue détaillée
@@ -44,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const toggleNegativeButton = document.getElementById("toggle-negative-button");
 
     cards.forEach(card => {
-        card.addEventListener("click", function() {
+        card.addEventListener("click", function () {
             const imgSrc = card.getAttribute("data-image");
             const date = card.getAttribute("data-date");
             detailImg.src = imgSrc;
@@ -57,12 +82,12 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    backButton.addEventListener("click", function() {
+    backButton.addEventListener("click", function () {
         detailView.style.display = "none";
         gridContainer.style.display = "block";
     });
 
-    toggleNegativeButton.addEventListener("click", function() {
+    toggleNegativeButton.addEventListener("click", function () {
         if (detailImg.style.filter === "invert(1)") {
             detailImg.style.filter = "none";
             toggleNegativeButton.textContent = "Show dark picture";
@@ -124,12 +149,12 @@ document.addEventListener("DOMContentLoaded", function() {
             }
 
             searchButton.addEventListener("click", searchMonsters);
-            searchInput.addEventListener("keydown", function(event) {
+            searchInput.addEventListener("keydown", function (event) {
                 if (event.key === "Enter") {
                     searchMonsters();
                 }
             });
-            resetButton.addEventListener("click", function() {
+            resetButton.addEventListener("click", function () {
                 searchInput.value = "";
                 document.querySelectorAll(".card").forEach(card => {
                     card.style.display = "block";
@@ -139,7 +164,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             // Ajout de l'événement sur chaque monstre dans l'onglet "Monsters List"
             document.querySelectorAll("#list-container li").forEach(li => {
-                li.addEventListener("click", function() {
+                li.addEventListener("click", function () {
                     // Hide the detail view and show the gallery grid for search results.
                     detailView.style.display = "none";
                     gridContainer.style.display = "block";
@@ -158,7 +183,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Boutons More/Less pour la section Stats
     const moreBpButton = document.getElementById("more-bp-button");
     if (moreBpButton) {
-        moreBpButton.addEventListener("click", function() {
+        moreBpButton.addEventListener("click", function () {
             const hiddenItems = document.querySelectorAll(".more-bp");
             hiddenItems.forEach(item => {
                 if (item.style.display === "list-item") {
@@ -174,7 +199,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const moreMonsterButton = document.getElementById("more-monster-button");
     if (moreMonsterButton) {
-        moreMonsterButton.addEventListener("click", function() {
+        moreMonsterButton.addEventListener("click", function () {
             const hiddenItems = document.querySelectorAll(".more-monsters");
             hiddenItems.forEach(item => {
                 if (item.style.display === "list-item") {

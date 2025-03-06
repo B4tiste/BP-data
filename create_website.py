@@ -46,24 +46,23 @@ html_content = '<!DOCTYPE html>\n<html lang="fr">\n<head>\n'
 html_content += '  <meta charset="UTF-8">\n'
 html_content += '  <title>BP Gallery</title>\n'
 html_content += '  <link rel="stylesheet" type="text/css" href="style.css">\n'
-# Styles additionnels pour les onglets et la mise en page des colonnes dans Stats
 html_content += '  <style>\n'
-html_content += '    /* Styles pour les onglets */\n'
+html_content += '    /* Styles pour les onglets et la mise en page des colonnes dans Stats */\n'
 html_content += '    .tab-container { display: flex; justify-content: center; margin-top: 20px; }\n'
 html_content += '    .tab-button { padding: 10px 20px; margin: 0 5px; font-size: 1rem; cursor: pointer; background-color: #3a3a3a; color: #e0e0e0; border: none; border-radius: 4px; transition: background-color 0.3s; }\n'
 html_content += '    .tab-button.active { background-color: #007bff; color: #fff; }\n'
-html_content += '    /* Styles pour les colonnes dans l\'onglet Stats */\n'
 html_content += '    .stats-columns { display: flex; justify-content: space-between; flex-wrap: wrap; }\n'
 html_content += '    .stats-column { flex: 1; margin: 10px; min-width: 300px; }\n'
 html_content += '    .hidden { display: none; }\n'
 html_content += '  </style>\n'
 html_content += '</head>\n<body>\n'
 
-# Navigation par onglets
+# Navigation avec 4 onglets
 html_content += '  <div class="tab-container">\n'
 html_content += '    <button class="tab-button active" id="gallery-tab">BP List</button>\n'
 html_content += '    <button class="tab-button" id="stats-tab">BP & Monsters Stats</button>\n'
 html_content += '    <button class="tab-button" id="list-tab">Monsters List</button>\n'
+html_content += '    <button class="tab-button" id="about-tab">About Me</button>\n'
 html_content += '  </div>\n'
 
 # Onglet Gallerie
@@ -78,7 +77,6 @@ html_content += '      </div>\n'
 html_content += '      <div id="search-results" class="search-results"></div>\n'
 html_content += '      <div class="grid">\n'
 for image in sorted_images:
-    # Extraire la date depuis le nom du fichier (ex: "skill_balance_29_05_2024.png")
     match = re.search(r'(\d{2}_\d{2}_\d{4})', image)
     if match:
         date_str = match.group(1)
@@ -135,7 +133,7 @@ html_content += '      </div>\n'
 html_content += '    </div>\n'
 html_content += '  </div>\n'  # Fin onglet Stats
 
-# Onglet Liste (simple liste alphabétique répartie sur plusieurs colonnes)
+# Onglet Liste (liste alphabétique)
 html_content += '  <div id="list-container" style="display: none;">\n'
 html_content += '    <div class="container">\n'
 html_content += '      <h2>Monsters List</h2>\n'
@@ -147,16 +145,23 @@ html_content += '      </ul>\n'
 html_content += '    </div>\n'
 html_content += '  </div>\n'  # Fin onglet Liste
 
-# Footer
+# Nouvel onglet About Me
+html_content += '  <div id="about-container" style="display: none;">\n'
+html_content += '    <div class="container">\n'
+html_content += '      <h2>About Me</h2>\n'
+html_content += "      <p>I'm B4tiste, a SW player that love creating tools for the community. Feel free to reeach to me on Discord @b4tiste to chat. You can support my work using the Donation button below, this will be very much appreciated !!</p>\n"
+html_content += '      <form action="https://www.paypal.com/donate" method="post" target="_top">\n'
+html_content += '        <input type="hidden" name="hosted_button_id" value="7MQNCEX6C3B4C" />\n'
+html_content += '        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />\n'
+html_content += '        <img alt="" border="0" src="https://www.paypal.com/en_FR/i/scr/pixel.gif" width="1" height="1" />\n'
+html_content += '      </form>\n'
+html_content += '    </div>\n'
+html_content += '  </div>\n'  # Fin onglet About Me
+
+# Footer (sans bouton de donation)
 html_content += '  <footer>\n'
 html_content += '    <p>By B4tiste (@b4tiste on Discord)</p>\n'
-html_content += '    <form action="https://www.paypal.com/donate" method="post" target="_top">\n'
-html_content += '      <input type="hidden" name="hosted_button_id" value="7MQNCEX6C3B4C" />\n'
-html_content += '      <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />\n'
-html_content += '      <img alt="" border="0" src="https://www.paypal.com/en_FR/i/scr/pixel.gif" width="1" height="1" />\n'
-html_content += '    </form>\n'
 html_content += '  </footer>\n'
-# Aucun script inline n'est ajouté ici ; tout le JavaScript est dans "script.js"
 html_content += '  <script src="script.js"></script>\n'
 html_content += '</body>\n</html>\n'
 
