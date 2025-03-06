@@ -139,6 +139,7 @@ html_content += '  </div>\n'  # Fin onglet Stats
 html_content += '  <div id="list-container" style="display: none;">\n'
 html_content += '    <div class="container">\n'
 html_content += '      <h2>Monsters List</h2>\n'
+html_content += '      <h3>Click on a monster to display his list of BPs !</h3>\n'
 html_content += '      <ul>\n'
 for monster in monsters_list:
     html_content += f'        <li>{monster}</li>\n'
