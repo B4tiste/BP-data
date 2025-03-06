@@ -150,6 +150,11 @@ html_content += '  </div>\n'  # Fin onglet Liste
 # Footer
 html_content += '  <footer>\n'
 html_content += '    <p>By B4tiste</p>\n'
+html_content += '    <form action="https://www.paypal.com/donate" method="post" target="_top">\n'
+html_content += '      <input type="hidden" name="hosted_button_id" value="7MQNCEX6C3B4C" />\n'
+html_content += '      <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />\n'
+html_content += '      <img alt="" border="0" src="https://www.paypal.com/en_FR/i/scr/pixel.gif" width="1" height="1" />\n'
+html_content += '    </form>\n'
 html_content += '  </footer>\n'
 # Aucun script inline n'est ajouté ici ; tout le JavaScript est dans "script.js"
 html_content += '  <script src="script.js"></script>\n'
