@@ -254,6 +254,11 @@ footer {
     border-bottom: 1px solid #444;
 }
 
+#list-container li:hover {
+    cursor: pointer;
+    background-color: #3a3a3a;
+}
+
 /* Style optionnel pour un index alphabétique si vous ajoutez des séparateurs */
 /* Par exemple, chaque lettre en tête de groupe */
 .letter-index {
