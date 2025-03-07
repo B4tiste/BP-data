@@ -124,7 +124,7 @@ def generate_html(sorted_images, bp_stats, monster_stats, monsters_not_in_dates_
     # Onglet About Me
     html_content += '  <div id="about-container" style="display: none;">\n'
     html_content += '    <div class="container">\n'
-    html_content += '      <h2>About Me</h2>\n'
+    html_content += '      <h2>About</h2>\n'
     html_content += "      <p>I'm B4tiste, a SW player that love creating tools for the community. Feel free to reach out to me on Discord @b4tiste to chat. You can support my work using the Donation button below, this will be very much appreciated !!</p>\n"
     html_content += '      <form action="https://www.paypal.com/donate" method="post" target="_top">\n'
     html_content += '        <input type="hidden" name="hosted_button_id" value="7MQNCEX6C3B4C" />\n'
