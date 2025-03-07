@@ -212,4 +212,22 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     }
+
+    // Bouton More pour la colonne "Monsters Natural 5 (Not in Dates)"
+    const moreCollabButton = document.getElementById("more-non-bp-button");
+    if (moreCollabButton) {
+        moreCollabButton.addEventListener("click", function () {
+            const hiddenItems = document.querySelectorAll(".more-non-bp");
+            hiddenItems.forEach(item => {
+                if (item.style.display === "list-item") {
+                    item.style.display = "none";
+                    moreCollabButton.textContent = "More";
+                } else {
+                    item.style.display = "list-item";
+                    moreCollabButton.textContent = "Less";
+                }
+            });
+        });
+    }
+
 });

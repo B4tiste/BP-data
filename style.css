@@ -227,7 +227,8 @@ footer {
 
 /* Boutons More/Less */
 #more-bp-button,
-#more-monster-button {
+#more-monster-button,
+#more-non-bp-button {
     padding: 8px 16px;
     font-size: 0.9rem;
     cursor: pointer;
