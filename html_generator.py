@@ -131,6 +131,7 @@ def generate_html(sorted_images, bp_stats, monster_stats, monsters_not_in_dates_
     html_content += '        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />\n'
     html_content += '        <img alt="" border="0" src="https://www.paypal.com/en_FR/i/scr/pixel.gif" width="1" height="1" />\n'
     html_content += '      </form>\n'
+    html_content += "      <p>Thanks to Spokland for the update gathering over the years</p>\n"
     html_content += '    </div>\n'
     html_content += '  </div>\n'
 
