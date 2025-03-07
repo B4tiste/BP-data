@@ -93,7 +93,7 @@ def generate_html(sorted_images, bp_stats, monster_stats, monsters_not_in_dates_
     html_content += '        </div>\n'
     # Colonne 3 : Monsters Natural 5 (Not in Dates)
     html_content += '        <div class="stats-column">\n'
-    html_content += '          <h2>Monsters that never made it to the BPs</h2>\n'
+    html_content += '          <h2>4*/5* Monsters that never made it to the BPs</h2>\n'
     html_content += '          <ul id="monsters-not-in-dates">\n'
     for i, monster in enumerate(monsters_not_in_dates_sorted):
         # On affiche le nom normalisé avec la première lettre en majuscule et l'élément

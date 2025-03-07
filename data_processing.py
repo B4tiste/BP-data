@@ -64,15 +64,22 @@ def filter_monsters_natural5(all_monsters):
         if monster.get("natural_stars") == 5 and monster.get("awaken_level", 0) > 0 and is_ascii(monster["name"])
     ]
 
+# Filtrer les monstres avec natural_stars == 4, awaken_level > 0 et nom en ASCII
+def filter_monsters_natural4(all_monsters):
+    return [
+        monster for monster in all_monsters
+        if monster.get("natural_stars") == 4 and monster.get("awaken_level", 0) > 0 and is_ascii(monster["name"])
+    ]
+
 # Construire l'ensemble des noms disponibles dans monsters_natural5 (normalisés)
-def get_available_monsters(monsters_natural5):
-    return {normalize_monster_name(monster["name"]) for monster in monsters_natural5}
+def get_available_monsters(monsters):
+    return {normalize_monster_name(monster["name"]) for monster in monsters}
 
 # Filtrer les monstres Natural 5 qui ne figurent pas déjà dans monster_dates et qui ne sont pas à exclure via le mapping collab
-def filter_monsters_not_in_dates(monsters_natural5, monster_dates, collab_mapping, available_monsters):
+def filter_monsters_not_in_dates(monsters, monster_dates, collab_mapping, available_monsters):
     normalized_monster_dates = {normalize_monster_name(name) for name in monster_dates}
     monsters_not_in_dates = []
-    for monster in monsters_natural5:
+    for monster in monsters:
         norm_name = normalize_monster_name(monster["name"])
         norm_element = normalize_monster_name(monster["element"])
         if norm_name in normalized_monster_dates:

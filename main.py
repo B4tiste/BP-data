@@ -16,9 +16,10 @@ def main():
     sorted_images = data_processing.get_sorted_images()
 
     monsters_natural5 = data_processing.filter_monsters_natural5(all_monsters)
-    available_monsters = data_processing.get_available_monsters(monsters_natural5)
+    monsters_natural4 = data_processing.filter_monsters_natural4(all_monsters)
+    available_monsters = data_processing.get_available_monsters(monsters_natural5 + monsters_natural4)
     monsters_not_in_dates_sorted = data_processing.filter_monsters_not_in_dates(
-        monsters_natural5,
+        monsters_natural5 + monsters_natural4,
         monster_dates,
         config.COLLAB_MAPPING,
         available_monsters
