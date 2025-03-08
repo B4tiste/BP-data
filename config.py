@@ -43,11 +43,11 @@ COLLAB_MAPPING = {
     "light m. bison": "craig",
     "dark m. bison": "gurkha",
     # COOKIE_RUN_KINGDOM - ESPRESSO
-    "water espresso": "rosemary",
-    "fire espresso": "hibiscus",
-    "wind espresso": "chamomile",
-    "light espresso": "jasmine",
-    "dark espresso": "lavender",
+    "water espresso cookie": "rosemary",
+    "fire espresso cookie": "hibiscus",
+    "wind espresso cookie": "chamomile",
+    "light espresso cookie": "jasmine",
+    "dark espresso cookie": "lavender",
     # COOKIE_RUN_KINGDOM - MADELEINE COOKIE
     "water madeleine cookie": "ganache",
     "fire madeleine cookie": "pave",
