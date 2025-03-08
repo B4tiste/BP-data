@@ -62,7 +62,10 @@ def generate_html(sorted_images, bp_stats, monster_stats, monsters_not_in_dates_
     html_content += '        <button id="prev-button">←</button>\n'
     html_content += '        <button id="next-button">→</button>\n'
     html_content += '      </div>\n'
-    html_content += '      <img id="detail-img" src="" alt="Balance Patch en grand" style="filter: invert(1);">\n'
+    html_content += '      <!-- Loader -->\n'
+    html_content += '      <div id="loader" class="loader" style="display: none;"></div>\n'
+    html_content += '      <!-- L\'image sera affichée après chargement -->\n'
+    html_content += '      <img id="detail-img" src="" alt="Balance Patch en grand" style="filter: invert(1); display: none;">\n'
     html_content += '    </div>\n'
     html_content += '  </div>\n'
 

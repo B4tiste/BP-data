@@ -11,6 +11,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const listContainer = document.getElementById("list-container");
     const aboutContainer = document.getElementById("about-container");
 
+    // Loader
+    const loader = document.getElementById("loader");
+
     // Onglet Gallery
     galleryTab.addEventListener("click", function () {
         galleryContainer.style.display = "block";
@@ -81,9 +84,18 @@ document.addEventListener("DOMContentLoaded", function () {
             const clickedImage = card.getAttribute("data-image");
             currentImageIndex = currentImagesList.indexOf(clickedImage);
 
-            // Afficher la vue détaillée
-            const date = card.getAttribute("data-date");
+            // Masquer l'image et afficher le loader
+            detailImg.style.display = "none";
+            loader.style.display = "block";
+
+            // Définir la source de l'image et attendre son chargement
             detailImg.src = clickedImage;
+            detailImg.onload = function () {
+                loader.style.display = "none";
+                detailImg.style.display = "block";
+            };
+
+            const date = card.getAttribute("data-date");
             detailCaption.innerHTML = "Balance Patch - " + date;
             gridContainer.style.display = "none";
             detailView.style.display = "block";
@@ -91,6 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
             toggleNegativeButton.textContent = "Show white picture";
         });
     });
+
 
     const prevButton = document.getElementById("prev-button");
     const nextButton = document.getElementById("next-button");
@@ -122,8 +135,18 @@ document.addEventListener("DOMContentLoaded", function () {
     // Fonction pour mettre à jour l'image affichée en fonction de currentImageIndex
     function updateDetailView() {
         const newImageSrc = currentImagesList[currentImageIndex];
+
+        // Masquer l'image et afficher le loader
+        detailImg.style.display = "none";
+        loader.style.display = "block";
+
         detailImg.src = newImageSrc;
-        // Recherche de la carte dont le data-image correspond à la nouvelle image
+        detailImg.onload = function () {
+            loader.style.display = "none";
+            detailImg.style.display = "block";
+        };
+
+        // Mise à jour de la légende
         const card = document.querySelector(`.card[data-image="${newImageSrc}"]`);
         if (card) {
             const newDate = card.getAttribute("data-date");

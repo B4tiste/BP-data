@@ -118,6 +118,26 @@ h2 {
     color: #fff !important;
 }
 
+/* Loader style */
+.loader {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #007bff;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto; /* Centrage horizontal */
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 /* Image en vue détaillée */
 #detail-img {
     width: 100%;
