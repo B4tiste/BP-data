@@ -11,7 +11,7 @@ def generate_html(sorted_images, bp_stats, monster_stats, monsters_not_in_dates_
     html_content += '    /* Styles pour les onglets et la mise en page des colonnes dans Stats */\n'
     html_content += '    .tab-container { display: flex; justify-content: center; margin-top: 20px; }\n'
     html_content += '    .tab-button { padding: 10px 20px; margin: 0 5px; font-size: 1rem; cursor: pointer; background-color: #3a3a3a; color: #e0e0e0; border: none; border-radius: 4px; transition: background-color 0.3s; }\n'
-    html_content += '    .tab-button.active { background-color: #007bff; color: #fff; }\n'
+    html_content += '    .tab-button.active { background-color: #28a745; color: #fff; }\n'
     html_content += '    .stats-columns { display: flex; justify-content: space-between; flex-wrap: wrap; }\n'
     html_content += '    .stats-column { flex: 1; margin: 10px; min-width: 300px; }\n'
     html_content += '    .hidden { display: none; }\n'
