@@ -145,7 +145,7 @@ def generate_html(sorted_images, bp_stats, monster_stats, monsters_not_in_dates_
 
     # Footer
     html_content += '  <footer>\n'
-    html_content += '    <p>By B4tiste (@b4tiste on Discord)</p>\n'
+    html_content += '    <p>By <strong>B4tiste</strong> (@b4tiste on Discord)</p>\n'
     html_content += '  </footer>\n'
     html_content += '  <script src="script.js"></script>\n'
     html_content += '</body>\n</html>\n'
