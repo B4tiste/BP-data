@@ -23,11 +23,11 @@ COLLAB_MAPPING = {
     "light dhalsim": "hekerson",
     "dark dhalsim": "cayde",
     # STREET_FIGHTER - CHUN LI
-    "water chun li": "lariel",
-    "fire chun li": "berenice",
-    "wind chun li": "cordelia",
-    "light chun li": "leah",
-    "dark chun li": "vereesa",
+    "water chun-li": "lariel",
+    "fire chun-li": "berenice",
+    "wind chun-li": "cordelia",
+    "light chun-li": "leah",
+    "dark chun-li": "vereesa",
     # STREET_FIGHTER - KEN
     "fire ken": "bernadotte",
     # STREET_FIGHTER - RYU
