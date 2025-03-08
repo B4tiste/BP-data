@@ -5,7 +5,7 @@ import config
 def generate_html(sorted_images, bp_stats, monster_stats, monsters_not_in_dates_sorted, monsters_list, monster_images):
     html_content = '<!DOCTYPE html>\n<html lang="fr">\n<head>\n'
     html_content += '  <meta charset="UTF-8">\n'
-    html_content += '  <title>BP Gallery</title>\n'
+    html_content += '  <title>Balance Patch Gallery</title>\n'
     html_content += '  <link rel="icon" type="image/x-icon" href="favicon.ico">\n'
     html_content += '  <link rel="stylesheet" type="text/css" href="style.css">\n'
     html_content += '  <meta property="og:title" content="BP Gallery" />\n'
