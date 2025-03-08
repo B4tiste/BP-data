@@ -60,6 +60,7 @@ def generate_html(sorted_images, bp_stats, monster_stats, monsters_not_in_dates_
     html_content += '      </div>\n'
     html_content += '      <div class="detail-navigation">\n'
     html_content += '        <button id="prev-button">←</button>\n'
+    html_content += '        <span id="detail-index"></span>\n'
     html_content += '        <button id="next-button">→</button>\n'
     html_content += '      </div>\n'
     html_content += '      <!-- Loader -->\n'

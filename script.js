@@ -68,6 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const detailView = document.getElementById("detail-view");
     const detailImg = document.getElementById("detail-img");
     const detailCaption = document.getElementById("detail-caption");
+    const detailIndex = document.getElementById("detail-index");
     const backButton = document.getElementById("back-button");
     const toggleNegativeButton = document.getElementById("toggle-negative-button");
 
@@ -83,6 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // Définir l'index courant en recherchant l'image cliquée
             const clickedImage = card.getAttribute("data-image");
             currentImageIndex = currentImagesList.indexOf(clickedImage);
+            detailIndex.textContent = `${currentImageIndex + 1} / ${currentImagesList.length}`;
 
             // Masquer l'image et afficher le loader
             detailImg.style.display = "none";
@@ -135,6 +137,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Fonction pour mettre à jour l'image affichée en fonction de currentImageIndex
     function updateDetailView() {
         const newImageSrc = currentImagesList[currentImageIndex];
+        detailIndex.textContent = `${currentImageIndex + 1} / ${currentImagesList.length}`;
 
         // Masquer l'image et afficher le loader
         detailImg.style.display = "none";
@@ -213,7 +216,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     const visibleCards = Array.from(document.querySelectorAll(".card"))
                         .filter(card => card.style.display !== "none").length;
-                    searchResultsElement.textContent = `Search : ${searchInput.value} (${visibleCards} result${visibleCards > 1 ? "s" : ""})`;
+                    searchResultsElement.textContent = `Search : ${searchInput.value.charAt(0).toUpperCase() + searchInput.value.slice(1)} (${visibleCards} result${visibleCards > 1 ? "s" : ""})`;
                 } else {
                     alert("Did not find any results for " + searchInput.value);
                     searchResultsElement.textContent = "";
