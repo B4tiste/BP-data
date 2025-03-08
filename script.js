@@ -68,19 +68,68 @@ document.addEventListener("DOMContentLoaded", function () {
     const backButton = document.getElementById("back-button");
     const toggleNegativeButton = document.getElementById("toggle-negative-button");
 
-    cards.forEach(card => {
+    let currentImagesList = [];
+    let currentImageIndex = 0;
+
+    cards.forEach((card, index) => {
         card.addEventListener("click", function () {
-            const imgSrc = card.getAttribute("data-image");
+            // Mettez à jour currentImagesList en fonction des cards visibles
+            currentImagesList = Array.from(document.querySelectorAll(".card"))
+                .filter(card => card.style.display !== "none")
+                .map(card => card.getAttribute("data-image"));
+            // Définir l'index courant en recherchant l'image cliquée
+            const clickedImage = card.getAttribute("data-image");
+            currentImageIndex = currentImagesList.indexOf(clickedImage);
+
+            // Afficher la vue détaillée
             const date = card.getAttribute("data-date");
-            detailImg.src = imgSrc;
+            detailImg.src = clickedImage;
             detailCaption.innerHTML = "Balance Patch - " + date;
             gridContainer.style.display = "none";
             detailView.style.display = "block";
-            // On s'assure que l'image est affichée en mode négatif par défaut
             detailImg.style.filter = "invert(1)";
             toggleNegativeButton.textContent = "Show white picture";
         });
     });
+
+    const prevButton = document.getElementById("prev-button");
+    const nextButton = document.getElementById("next-button");
+
+    prevButton.addEventListener("click", function () {
+        if (currentImagesList.length === 0) return;
+        // Si possible, décrémentez l'index sinon restez à 0 (ou boucler à la fin selon le comportement désiré)
+        if (currentImageIndex > 0) {
+            currentImageIndex--;
+        } else {
+            // Optionnel : boucler à la fin de la liste
+            currentImageIndex = currentImagesList.length - 1;
+        }
+        updateDetailView();
+    });
+
+    nextButton.addEventListener("click", function () {
+        if (currentImagesList.length === 0) return;
+        // Si possible, incrémentez l'index sinon restez à la fin (ou boucler au début selon le comportement désiré)
+        if (currentImageIndex < currentImagesList.length - 1) {
+            currentImageIndex++;
+        } else {
+            // Optionnel : boucler au début de la liste
+            currentImageIndex = 0;
+        }
+        updateDetailView();
+    });
+
+    // Fonction pour mettre à jour l'image affichée en fonction de currentImageIndex
+    function updateDetailView() {
+        const newImageSrc = currentImagesList[currentImageIndex];
+        detailImg.src = newImageSrc;
+        // Recherche de la carte dont le data-image correspond à la nouvelle image
+        const card = document.querySelector(`.card[data-image="${newImageSrc}"]`);
+        if (card) {
+            const newDate = card.getAttribute("data-date");
+            detailCaption.innerHTML = "Balance Patch - " + newDate;
+        }
+    }
 
     backButton.addEventListener("click", function () {
         detailView.style.display = "none";
