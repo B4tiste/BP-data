@@ -1,12 +1,16 @@
 import config
 import data_processing
 import html_generator
+import json
 
 def main():
     # Chargement des données
     monster_dates = data_processing.load_monster_dates()
     all_monsters_data = data_processing.load_all_monsters()
     all_monsters = all_monsters_data["monsters"]
+
+    # Récupération des liens vers les images de tous les monstres
+    monster_images = data_processing.load_monster_images(all_monsters)
 
     # Traitement des données
     monsters_list = data_processing.get_monsters_list(monster_dates)
@@ -26,7 +30,7 @@ def main():
     )
 
     # Génération du contenu HTML
-    html_content = html_generator.generate_html(sorted_images, bp_stats, monster_stats, monsters_not_in_dates_sorted, monsters_list)
+    html_content = html_generator.generate_html(sorted_images, bp_stats, monster_stats, monsters_not_in_dates_sorted, monsters_list, monster_images)
 
     # Écriture dans le fichier de sortie
     with open(config.OUTPUT_HTML_FILE, 'w', encoding='utf-8') as f:

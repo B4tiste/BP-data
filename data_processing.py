@@ -32,6 +32,12 @@ def load_all_monsters():
     with open(config.MONSTERS_DATA_FILE, 'r', encoding='utf-8') as f:
         return json.load(f)
 
+# Chargement des urls d'images des monstres
+def load_monster_images(all_monsters):
+    base_image_url = "https://swarfarm.com/static/herders/images/monsters/"
+    monster_images = {normalize_monster_name(monster["name"]): base_image_url + monster["image_filename"] for monster in all_monsters}
+    return monster_images
+
 # Liste des monstres présents dans le fichier monster_dates, triée par ordre alphabétique
 def get_monsters_list(monster_dates):
     return sorted(monster_dates.keys())

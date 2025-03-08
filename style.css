@@ -24,7 +24,7 @@ h1 {
 }
 
 h2 {
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 /* Grille pour les cards */
@@ -237,16 +237,26 @@ h2 {
 /* Listes et éléments dans la section Stats */
 .stats-columns {
     display: flex;
+    flex: 1;
     justify-content: space-between;
     flex-wrap: wrap;
-}
-
-.stats-column {
-    flex: 1;
     margin: 10px;
     min-width: 300px;
 }
 
+.stats-column:not(:last-child) {
+    position: relative;
+}
+
+.stats-column:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1px;
+    height: 100%;
+    background-color: #444;
+}
 .stats-column ul {
     list-style-type: none;
     padding: 0;
@@ -255,7 +265,7 @@ h2 {
 
 .stats-column li {
     padding: 5px 10px;
-    border-bottom: 1px solid #444;
+    /* border-bottom: 1px solid #444; */
 }
 
 .stats-column li:hover {
@@ -308,6 +318,13 @@ h2 {
     font-weight: bold;
     margin-top: 20px;
     break-before: column;
+}
+
+/* Limiter la hauteur des images dans la liste des monstres non datés */
+#monsters-not-in-dates li img,
+#monster-stats-list li img {
+    max-height: 2em;
+    vertical-align: middle;
 }
 
 /* Footer */

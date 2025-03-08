@@ -2,7 +2,7 @@ import re
 from datetime import datetime
 import config
 
-def generate_html(sorted_images, bp_stats, monster_stats, monsters_not_in_dates_sorted, monsters_list):
+def generate_html(sorted_images, bp_stats, monster_stats, monsters_not_in_dates_sorted, monsters_list, monster_images):
     html_content = '<!DOCTYPE html>\n<html lang="fr">\n<head>\n'
     html_content += '  <meta charset="UTF-8">\n'
     html_content += '  <title>BP Gallery</title>\n'
@@ -89,14 +89,16 @@ def generate_html(sorted_images, bp_stats, monster_stats, monsters_not_in_dates_
     html_content += '        </div>\n'
     # Colonne 2 : Monsters Stats
     html_content += '        <div class="stats-column">\n'
-    html_content += '          <h2>Monsters Stats</h2>\n'
+    html_content += '          <h2>Monsters sorted by BPs amount</h2>\n'
     html_content += '          <ul id="monster-stats-list">\n'
     for i, (monster, dates) in enumerate(monster_stats):
         count = len(dates)
+        # Récupération de l'image du monstre
+        img_url = monster_images[monster.lower()]
         if i < 15:
-            html_content += f'            <li>{monster} : {count} BPs</li>\n'
+            html_content += f'            <li><img src={img_url} alt="{monster}"> {monster} : {count} BPs</li>\n'
         else:
-            html_content += f'            <li class="more-monsters hidden">{monster} : {count} BPs</li>\n'
+            html_content += f'            <li class="more-monsters hidden"><img data-src="{img_url}" alt="{monster}"> {monster} : {count} BPs</li>\n'
     html_content += '          </ul>\n'
     html_content += '          <button id="more-monster-button">More</button>\n'
     html_content += '        </div>\n'
@@ -107,11 +109,12 @@ def generate_html(sorted_images, bp_stats, monster_stats, monsters_not_in_dates_
     html_content += '          <ul id="monsters-not-in-dates">\n'
     for i, monster in enumerate(monsters_not_in_dates_sorted):
         # On affiche le nom normalisé avec la première lettre en majuscule et l'élément
-        norm_name = f"{monster['name'].capitalize()} ({monster['element']})"
-        if i < 15:
-            html_content += f'            <li>{norm_name}</li>\n'
+        norm_name = f"{monster['name'].capitalize()}"
+        img_url = monster_images[monster["name"].lower()]
+        if i < 10:
+            html_content += f'            <li><img src={img_url} alt="{monster["name"]}"> {norm_name} </li>\n'
         else:
-            html_content += f'            <li class="more-non-bp hidden">{norm_name}</li>\n'
+            html_content += f'            <li class="more-non-bp hidden"><img data-src="{img_url}" alt="{monster["name"]}"> {norm_name} </li>\n'
     html_content += '          </ul>\n'
     html_content += '          <button id="more-non-bp-button">More</button>\n'
     html_content += '        </div>\n'

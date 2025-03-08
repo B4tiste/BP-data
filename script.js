@@ -256,6 +256,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
     // Boutons More/Less pour la section Stats
+    // Bouton More pour la colonne 1
     const moreBpButton = document.getElementById("more-bp-button");
     if (moreBpButton) {
         moreBpButton.addEventListener("click", function () {
@@ -272,6 +273,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // Bouton More pour la colonne 2
     const moreMonsterButton = document.getElementById("more-monster-button");
     if (moreMonsterButton) {
         moreMonsterButton.addEventListener("click", function () {
@@ -283,12 +285,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 } else {
                     item.style.display = "list-item";
                     moreMonsterButton.textContent = "Less";
+                    // Charger l'image si elle n'a pas déjà été chargée
+                    const img = item.querySelector("img");
+                    if (!img.getAttribute("src") && img.getAttribute("data-src")) {
+                        img.setAttribute("src", img.getAttribute("data-src"));
+                    }
                 }
             });
         });
     }
 
-    // Bouton More pour la colonne "Monsters Natural 5 (Not in Dates)"
+
+    // Bouton More pour la colonne 3
     const moreCollabButton = document.getElementById("more-non-bp-button");
     if (moreCollabButton) {
         moreCollabButton.addEventListener("click", function () {
@@ -300,9 +308,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 } else {
                     item.style.display = "list-item";
                     moreCollabButton.textContent = "Less";
+                    // Charger l'image si elle n'a pas encore été chargée
+                    const img = item.querySelector("img");
+                    if (!img.getAttribute("src") && img.getAttribute("data-src")) {
+                        img.setAttribute("src", img.getAttribute("data-src"));
+                    }
                 }
             });
         });
     }
+
 
 });
