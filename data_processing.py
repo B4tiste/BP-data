@@ -18,9 +18,9 @@ def normalize_monster_name(name):
     normalized = unicodedata.normalize('NFKD', name)
     return ''.join(c for c in normalized if not unicodedata.combining(c))
 
-# Vérification que la chaîne est composée uniquement de caractères ASCII
+# Vérification que la chaîne est composée uniquement de caractères ascii ou dérivés
 def is_ascii(s):
-    return all(ord(c) < 128 for c in s)
+    return all(ord(c) < 255 for c in s)
 
 # Chargement du fichier JSON contenant les dates associées aux monstres
 def load_monster_dates():
