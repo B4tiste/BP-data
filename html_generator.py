@@ -10,7 +10,7 @@ def generate_html(sorted_images, bp_stats, monster_stats, monsters_not_in_dates_
     html_content += '  <link rel="stylesheet" type="text/css" href="style.css">\n'
     html_content += '  <meta property="og:title" content="BP Gallery" />\n'
     html_content += '  <meta property="og:description" content="Looking for a specific Balance Patch Note ? This gallery is made for you !" />\n'
-    html_content += '  <meta property="og:image" content="https://bp-archive.netlify.app/preview" />\n'
+    html_content += '  <meta property="og:image" content="https://bp-archive.netlify.app/preview.png" />\n'
     html_content += '  <meta property="og:url" content="https://bp-archive.netlify.app/" />\n'
     html_content += '  <style>\n'
     html_content += '    /* Styles pour les onglets et la mise en page des colonnes dans Stats */\n'
