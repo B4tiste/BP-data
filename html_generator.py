@@ -77,9 +77,10 @@ def generate_html(sorted_images, bp_stats, monster_stats, monsters_not_in_dates_
     # Colonne 1 : Balance Patch Stats
     html_content += '        <div class="stats-column">\n'
     html_content += '          <h2>Balance Patch Stats</h2>\n'
+    html_content += '          <h3>Total: ' + str(len(bp_stats)) + ' BPs</h3>\n'
     html_content += '          <ul id="bp-stats-list">\n'
     for i, (bp, count) in enumerate(bp_stats):
-        if i < 10:
+        if i < 15:
             html_content += f'            <li>{bp} : {count} monsters</li>\n'
         else:
             html_content += f'            <li class="more-bp hidden">{bp} : {count} monsters</li>\n'
@@ -99,9 +100,10 @@ def generate_html(sorted_images, bp_stats, monster_stats, monsters_not_in_dates_
     html_content += '          </ul>\n'
     html_content += '          <button id="more-monster-button">More</button>\n'
     html_content += '        </div>\n'
-    # Colonne 3 : Monsters Natural 5 (Not in Dates)
+    # Colonne 3 : Monsters not in dates
     html_content += '        <div class="stats-column">\n'
     html_content += '          <h2>4*/5* Monsters that never made it to the BPs</h2>\n'
+    html_content += f'         <h3>Total: {len(monsters_not_in_dates_sorted)} monsters</h3>\n'
     html_content += '          <ul id="monsters-not-in-dates">\n'
     for i, monster in enumerate(monsters_not_in_dates_sorted):
         # On affiche le nom normalisé avec la première lettre en majuscule et l'élément
@@ -122,6 +124,7 @@ def generate_html(sorted_images, bp_stats, monster_stats, monsters_not_in_dates_
     html_content += '    <div class="container">\n'
     html_content += '      <h2>Monsters List</h2>\n'
     html_content += '      <h3>Click on a monster to display his list of BPs !</h3>\n'
+    html_content += '      <h3>Total: ' + str(len(monsters_list)) + ' monsters</h3>\n'
     html_content += '      <ul>\n'
     for monster in monsters_list:
         html_content += f'        <li>{monster}</li>\n'
