@@ -3,6 +3,9 @@ from datetime import datetime
 import config
 
 def generate_html(sorted_images, bp_stats, monster_stats, monsters_not_in_dates_sorted, monsters_list, monster_images):
+    # Conversion de bp_stats en dictionnaire pour faciliter la recherche : date -> count
+    bp_dict = dict(bp_stats)
+
     html_content = '<!DOCTYPE html>\n<html lang="fr">\n<head>\n'
     html_content += '  <meta charset="UTF-8">\n'
     html_content += '  <title>Balance Patch Gallery</title>\n'
@@ -51,9 +54,11 @@ def generate_html(sorted_images, bp_stats, monster_stats, monsters_not_in_dates_
             formatted_date = date_obj.strftime('%d/%m/%Y')
         else:
             formatted_date = "Date inconnue"
+        # Récupération du nombre de monstres pour ce BP (par date)
+        count = bp_dict.get(formatted_date, 0)
         html_content += f'        <div class="card" data-image="{config.IMAGES_DIR}/{image}" data-date="{formatted_date}">\n'
         html_content += f'          <p class="date">{formatted_date}</p>\n'
-        html_content += '          <p class="title">Balance Patch</p>\n'
+        html_content += f'          <p class="count">{count} monsters</p>\n' if count > 1 else f'          <p class="count">{count} monster</p>\n'
         html_content += '        </div>\n'
     html_content += '      </div>\n'
     html_content += '    </div>\n'
@@ -113,7 +118,7 @@ def generate_html(sorted_images, bp_stats, monster_stats, monsters_not_in_dates_
     html_content += f'         <h3>Total: {len(monsters_not_in_dates_sorted)} monsters</h3>\n'
     html_content += '          <ul id="monsters-not-in-dates">\n'
     for i, monster in enumerate(monsters_not_in_dates_sorted):
-        # On affiche le nom normalisé avec la première lettre en majuscule et l'élément
+        # On affiche le nom normalisé avec la première lettre en majuscule et l\'élément
         norm_name = f"{monster['name'].capitalize()}"
         img_url = monster_images[monster["name"].lower()]
         if i < 10:
