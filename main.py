@@ -6,8 +6,7 @@ import json
 def main():
     # Chargement des données
     monster_dates = data_processing.load_monster_dates()
-    all_monsters_data = data_processing.load_all_monsters()
-    all_monsters = all_monsters_data["monsters"]
+    all_monsters = data_processing.load_all_monsters()
 
     # Récupération des liens vers les images de tous les monstres
     monster_images = data_processing.load_monster_images(all_monsters)

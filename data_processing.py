@@ -30,7 +30,35 @@ def load_monster_dates():
 # Chargement du fichier JSON contenant tous les monstres du jeu
 def load_all_monsters():
     with open(config.MONSTERS_DATA_FILE, 'r', encoding='utf-8') as f:
-        return json.load(f)
+        # remove any element that has "obtainable" set to False
+        """
+        format :
+        {
+    "monsters": [
+        {
+            "id": 1,
+            "url": "https://swarfarm.com/api/v2/monsters/1/",
+            "bestiary_slug": "12302-fire-forest-keeper",
+            "com2us_id": 12302,
+            "family_id": 12300,
+            "skill_group_id": 12300,
+            "name": "Forest Keeper",
+            "image_filename": "unit_icon_0010_2_1.png",
+            "element": "Fire",
+            "archetype": "Defense",
+            "base_stars": 1,
+            "natural_stars": 1,
+            "obtainable": true,
+            "can_awaken": false,
+            "awaken_level": 0,
+            "awaken_bonus": "",
+            "skills": [
+                4
+            ],
+        """
+        all_monsters = json.load(f)
+        # print(all_monsters["monsters"][1])
+        return [monster for monster in all_monsters["monsters"] if monster.get("obtainable", True)]
 
 # Chargement des urls d'images des monstres
 def load_monster_images(all_monsters):
