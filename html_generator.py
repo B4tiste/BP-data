@@ -86,8 +86,8 @@ def generate_html(sorted_images, bp_stats, monster_stats, monsters_not_in_dates_
     html_content += '      <div class="stats-columns">\n'
     # Colonne 1 : Balance Patch Stats
     html_content += '        <div class="stats-column">\n'
-    html_content += '          <h2>Balance Patch Stats</h2>\n'
-    html_content += '          <h3>Total: ' + str(len(bp_stats)) + ' BPs</h3>\n'
+    html_content += '          <h2>BPs with the most changes</h2>\n'
+    html_content += '          <h3>Total: ' + str(len(bp_stats)) + ' monster related BPs</h3>\n'
     html_content += '          <ul id="bp-stats-list">\n'
     for i, (bp, count) in enumerate(bp_stats):
         if i < 15:
