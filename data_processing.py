@@ -97,7 +97,7 @@ def filter_monsters_not_in_dates(monsters, monster_dates, collab_mapping, availa
             if counterpart in available_monsters:
                 continue
         monsters_not_in_dates.append(monster)
-    # Trier par nom normalisé
-    monsters_not_in_dates_sorted = sorted(monsters_not_in_dates, key=lambda m: normalize_monster_name(m["name"]))
+    # Trier par "id"
+    monsters_not_in_dates_sorted = sorted(monsters_not_in_dates, key=lambda x: x["id"])
     # Retirer les monstres "homunculus"
     return [monster for monster in monsters_not_in_dates_sorted if "homunculus" not in monster["name"].lower()]
