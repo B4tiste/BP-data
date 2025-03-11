@@ -15,15 +15,6 @@ def generate_html(sorted_images, bp_stats, monster_stats, monsters_not_in_dates_
     html_content += '  <meta property="og:description" content="Looking for a specific Balance Patch Note ? This gallery is made for you !" />\n'
     html_content += '  <meta property="og:image" content="https://bp-archive.netlify.app/preview.png" />\n'
     html_content += '  <meta property="og:url" content="https://bp-archive.netlify.app/" />\n'
-    html_content += '  <style>\n'
-    html_content += '    /* Styles pour les onglets et la mise en page des colonnes dans Stats */\n'
-    html_content += '    .tab-container { display: flex; justify-content: center; margin-top: 20px; }\n'
-    html_content += '    .tab-button { padding: 10px 20px; margin: 0 5px; font-size: 1rem; cursor: pointer; background-color: #3a3a3a; color: #e0e0e0; border: none; border-radius: 4px; transition: background-color 0.3s; }\n'
-    html_content += '    .tab-button.active { background-color: #28a745; color: #fff; }\n'
-    html_content += '    .stats-columns { display: flex; justify-content: space-between; flex-wrap: wrap; }\n'
-    html_content += '    .stats-column { flex: 1; margin: 10px; min-width: 300px; }\n'
-    html_content += '    .hidden { display: none; }\n'
-    html_content += '  </style>\n'
     html_content += '</head>\n'
     html_content += '<body>\n'
 
@@ -62,7 +53,7 @@ def generate_html(sorted_images, bp_stats, monster_stats, monsters_not_in_dates_
         html_content += '        </div>\n'
     html_content += '      </div>\n'
     html_content += '    </div>\n'
-    html_content += '    <div class="detail-view" id="detail-view" style="display: none;">\n'
+    html_content += '    <div class="detail-view hidden" id="detail-view">\n'
     html_content += '      <h2 id="detail-caption"></h2>\n'
     html_content += '      <div class="detail-buttons">\n'
     html_content += '        <button id="back-button">Back</button>\n'
@@ -74,14 +65,14 @@ def generate_html(sorted_images, bp_stats, monster_stats, monsters_not_in_dates_
     html_content += '        <button id="next-button">→</button>\n'
     html_content += '      </div>\n'
     html_content += '      <!-- Loader -->\n'
-    html_content += '      <div id="loader" class="loader" style="display: none;"></div>\n'
+    html_content += '      <div id="loader" class="loader hidden"></div>\n'
     html_content += '      <!-- L\'image sera affichée après chargement -->\n'
-    html_content += '      <img id="detail-img" src="" alt="Balance Patch en grand" style="filter: invert(1); display: none;">\n'
+    html_content += '      <img id="detail-img" src="" alt="Balance Patch en grand">\n'
     html_content += '    </div>\n'
     html_content += '  </div>\n'
 
     # Onglet Stats
-    html_content += '  <div id="stats-container" style="display: none;">\n'
+    html_content += '  <div id="stats-container" class="hidden">\n'
     html_content += '    <div class="container">\n'
     html_content += '      <div class="stats-columns">\n'
     # Colonne 1 : Balance Patch Stats
@@ -103,7 +94,6 @@ def generate_html(sorted_images, bp_stats, monster_stats, monsters_not_in_dates_
     html_content += '          <ul id="monster-stats-list">\n'
     for i, (monster, dates) in enumerate(monster_stats):
         count = len(dates)
-        # Récupération de l'image du monstre
         img_url = monster_images[monster.lower()]
         if i < 15:
             html_content += f'            <li><img src={img_url} alt="{monster}"> {monster} : {count} BPs</li>\n'
@@ -118,7 +108,6 @@ def generate_html(sorted_images, bp_stats, monster_stats, monsters_not_in_dates_
     html_content += f'         <h3>Total: {len(monsters_not_in_dates_sorted)} monsters</h3>\n'
     html_content += '          <ul id="monsters-not-in-dates">\n'
     for i, monster in enumerate(monsters_not_in_dates_sorted):
-        # On affiche le nom normalisé avec la première lettre en majuscule et l\'élément
         norm_name = f"{monster['name'].capitalize()}"
         img_url = monster_images[monster["name"].lower()]
         if i < 10:
@@ -133,7 +122,7 @@ def generate_html(sorted_images, bp_stats, monster_stats, monsters_not_in_dates_
     html_content += '  </div>\n'
 
     # Onglet Liste
-    html_content += '  <div id="list-container" style="display: none;">\n'
+    html_content += '  <div id="list-container" class="hidden">\n'
     html_content += '    <div class="container">\n'
     html_content += '      <h2>Monsters List</h2>\n'
     html_content += '      <h3>Click on a monster to display his list of BPs !</h3>\n'
@@ -146,7 +135,7 @@ def generate_html(sorted_images, bp_stats, monster_stats, monsters_not_in_dates_
     html_content += '  </div>\n'
 
     # Onglet About Me
-    html_content += '  <div id="about-container" style="display: none;">\n'
+    html_content += '  <div id="about-container" class="hidden">\n'
     html_content += '    <div class="container">\n'
     html_content += '      <h2>About</h2>\n'
     html_content += "      <p>I'm B4tiste, a SW player that love creating tools for the community. Feel free to reach out to me on Discord @b4tiste to chat. You can support my work using the Donation button below, this will be very much appreciated !!</p>\n"

@@ -1,3 +1,55 @@
+/* Navigation & onglets */
+.tab-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.tab-button {
+    padding: 10px 20px;
+    margin: 0 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #3a3a3a;
+    color: #e0e0e0;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.tab-button.active {
+    background-color: #28a745;
+    color: #fff;
+}
+
+/* Colonnes de stats */
+.stats-columns {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.stats-column {
+    flex: 1;
+    margin: 10px;
+    min-width: 300px;
+}
+
+/* Classe utilitaire pour masquer des éléments */
+.hidden {
+    display: none;
+}
+
+/* Image en vue détaillée (masquée par défaut) */
+#detail-img {
+    display: none;
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+    /* Séparation entre les boutons et l'image */
+    filter: invert(1);
+}
+
 /* Corps de page */
 body {
     margin: 0;
@@ -16,7 +68,7 @@ body {
     border-radius: 8px;
 }
 
-/* Titre */
+/* Titres */
 h1 {
     text-align: center;
     margin-bottom: 30px;
@@ -111,14 +163,14 @@ h2 {
     background-color: #28a745;
 }
 
-/* Style pour les éléments sélectionnés */
+/* Styles pour les éléments sélectionnés */
 .selected,
 .button-selected {
     background-color: #28a745 !important;
     color: #fff !important;
 }
 
-/* Loader style */
+/* Loader */
 .loader {
     border: 8px solid #f3f3f3;
     border-top: 8px solid #28a745;
@@ -126,24 +178,18 @@ h2 {
     width: 60px;
     height: 60px;
     animation: spin 1s linear infinite;
-    margin: 20px auto; /* Centrage horizontal */
+    margin: 20px auto;
+    /* Centrage horizontal */
 }
 
 @keyframes spin {
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
-}
-
-/* Image en vue détaillée */
-#detail-img {
-    width: 100%;
-    height: auto;
-    margin-top: 10px; /* Séparation entre les boutons et l'image */
-    filter: invert(1);
 }
 
 /* Caption de la vue détaillée */
@@ -206,57 +252,7 @@ h2 {
     background-color: #5a6268;
 }
 
-/* Onglets */
-.tab-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.tab-button {
-    padding: 10px 20px;
-    margin: 0 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    background-color: #3a3a3a;
-    color: #e0e0e0;
-    border: none;
-    border-radius: 4px;
-    transition: background-color 0.3s;
-}
-
-.tab-button:hover {
-    background-color: #218838;
-}
-
-.tab-button.active {
-    background-color: #28a745;
-    color: #fff;
-}
-
 /* Listes et éléments dans la section Stats */
-.stats-columns {
-    display: flex;
-    flex: 1;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin: 10px;
-    min-width: 300px;
-}
-
-.stats-column:not(:last-child) {
-    position: relative;
-}
-
-.stats-column:not(:last-child)::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 1px;
-    height: 100%;
-    background-color: #444;
-}
 .stats-column ul {
     list-style-type: none;
     padding: 0;
@@ -265,7 +261,6 @@ h2 {
 
 .stats-column li {
     padding: 5px 10px;
-    /* border-bottom: 1px solid #444; */
 }
 
 .stats-column li:hover {
@@ -342,6 +337,7 @@ footer {
         margin: 10px;
         padding: 15px;
     }
+
     h1 {
         font-size: 2rem;
     }
