@@ -38,4 +38,5 @@ def main():
     print(f"Index file created: {config.OUTPUT_HTML_FILE}")
 
 if __name__ == "__main__":
+
     main()

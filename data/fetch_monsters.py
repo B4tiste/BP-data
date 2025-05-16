@@ -65,3 +65,14 @@ if __name__ == "__main__":
         json.dump(all_data, outfile, indent=4)
 
     print(f"\nData fetching completed. Total monsters saved: {len(all_data['monsters'])}. Data saved to {file_path}.")
+
+    # create a copy of the file "monsters.json" => "monsters_elements.json"
+    with open(file_path, "r") as infile:
+        data = json.load(infile)
+    # for each element in the file, add "- data["element"]" to the name field
+    for monster in data["monsters"]:
+        monster["name"] = f"{monster['name']} - {monster['element']}"
+    # save the new data to "monsters_elements.json"
+    with open("monsters_elements.json", "w") as outfile:
+        json.dump(data, outfile, indent=4)
+    print(f"\nData copied to monsters_elements.json.")

@@ -1,9 +1,9 @@
 29/03/2025 :
-    Nezuko eau
+    Nezuko eau DONE
 
-    Inosuke eau
+    Inosuke eau DONE
 
-    Inosuke feu
-    Inosuke vent
-    Inosuke dark
+    Inosuke feu DONE
+    Inosuke vent DONE
+    Inosuke dark DONE
 
