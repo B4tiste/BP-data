@@ -200,12 +200,11 @@ h2 {
     margin-bottom: 10px;
 }
 
-/* Barre de recherche */
+/* 1. Positionnement de la search-container pour l’absolu */
 .search-container {
-    display: flex;
-    justify-content: center;
+    position: relative;
+    display: inline-flex;       /* Ne prend que la place des enfants */
     align-items: center;
-    margin-bottom: 20px;
 }
 
 .search-container input {
@@ -235,6 +234,37 @@ h2 {
     margin-right: 10px;
     background-color: #3a3a3a;
     color: #e0e0e0;
+}
+
+/* 2. Style du menu de suggestions — mêmes nuances que le reste du site */
+.suggestions-container {
+    display: none;              /* Masqué par défaut */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #3a3a3a;
+    border: 1px solid #555;
+    border-radius: 4px;
+    box-sizing: border-box;
+    width: 100%;                /* Remplit toute la largeur de .search-container */
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+/* 3. Items de suggestion dans les tons sombres */
+.suggestion-item {
+    padding: 8px;
+    cursor: pointer;
+    color: #e0e0e0;
+}
+.suggestion-item:hover {
+    background-color: #444;
+}
+
+/* 4. Masquer automatiquement si vide */
+.suggestions-container:empty {
+    display: none;
 }
 
 #search-button {

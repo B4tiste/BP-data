@@ -34,6 +34,7 @@ def generate_html(sorted_images, bp_stats, monster_stats, monsters_not_in_dates_
     html_content += '        <input type="text" id="monster-search" placeholder="Type a monster name...">\n'
     html_content += '        <button id="search-button">Search</button>\n'
     html_content += '        <button id="reset-button">Reset</button>\n'
+    html_content += '        <div id="suggestions-container" class="suggestions-container"></div>\n'  # Nouveau conteneur
     html_content += '      </div>\n'
     html_content += '      <div id="search-results" class="search-results"></div>\n'
     html_content += '      <div class="grid">\n'
@@ -153,6 +154,9 @@ def generate_html(sorted_images, bp_stats, monster_stats, monsters_not_in_dates_
     html_content += '  <footer>\n'
     html_content += '    <p>By <strong>B4tiste</strong> (@b4tiste on Discord)</p>\n'
     html_content += '  </footer>\n'
+    html_content += '<script>\n'
+    html_content += f'const monstersList = {monsters_list};\n'  # Transmet la liste des monstres
+    html_content += '</script>\n'
     html_content += '  <script src="script.js"></script>\n'
     html_content += '</body>\n</html>\n'
 

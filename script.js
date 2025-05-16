@@ -178,6 +178,36 @@ document.addEventListener("DOMContentLoaded", function () {
     const resetButton = document.getElementById("reset-button");
     const searchResultsElement = document.getElementById("search-results");
 
+    document.getElementById("monster-search").addEventListener("input", function () {
+        const query = this.value.toLowerCase();
+        const suggestionsContainer = document.getElementById("suggestions-container");
+        suggestionsContainer.innerHTML = ""; // Efface tout
+
+        if (query.length > 0) {
+            const matchingMonsters = monstersList.filter(monster => monster.toLowerCase().includes(query));
+            const topSuggestions = matchingMonsters.slice(0, 10);
+
+            topSuggestions.forEach(monster => {
+                const suggestionItem = document.createElement("div");
+                suggestionItem.className = "suggestion-item";
+                suggestionItem.textContent = monster;
+                suggestionItem.addEventListener("click", () => {
+                    searchInput.value = monster;
+                    searchButton.click();
+                    suggestionsContainer.innerHTML = ""; // Réinitialise
+                    suggestionsContainer.style.display = "none"; // Cache le conteneur de suggestions
+                });
+                suggestionsContainer.appendChild(suggestionItem);
+            });
+
+            // N’affiche le menu que s’il y a au moins une suggestion
+            if (topSuggestions.length > 0) {
+                suggestionsContainer.style.display = "block";
+            }
+        }
+        // si query vide ou pas de suggestions, le :empty ou on réassigne display:none gère le reste
+    });
+
     fetch("monster_dates.json")
         .then(response => response.json())
         .then(monsterDates => {
