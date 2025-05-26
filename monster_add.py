@@ -24,7 +24,7 @@ def index():
 @app.route('/add', methods=["POST"])
 def add_monster():
     data = request.json
-    monster_name = data.get("monster_name", "").capitalize()
+    monster_name = data.get("monster_name", "")
     date = data.get("date", "")
     if not monster_name or not date:
         return jsonify({"success": False, "message": "Données manquantes."})
