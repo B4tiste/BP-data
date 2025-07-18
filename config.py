@@ -96,8 +96,8 @@ COLLAB_MAPPING = {
     "dark eivor - dark": "sigrid - dark",
     # THE WITCHER 3 - GERALT
     "water geralt - water": "anders - water",
-    "fire geralt - fire": "patrick - fire",
-    "wind geralt - wind": "magnus - wind",
+    "fire geralt - fire": "magnus - fire",
+    "wind geralt - wind": "henrik - wind",
     "light geralt - light": "lars - light",
     "dark geralt - dark": "valdemar - dark",
     # THE WITCHER 3 - YENNEFER
